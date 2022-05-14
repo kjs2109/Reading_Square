@@ -122,6 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 AUTH_USER_MODEL = 'users.User'  # 유저 모델 정의 후 꼭!! 해주어야 하는 설정 
 
 # Auth settings

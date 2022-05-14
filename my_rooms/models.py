@@ -15,7 +15,7 @@ class Book(TimeStempedModel):
     author = models.CharField(max_length=30)
     memo = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
-    book_image = models.ImageField(blank=True)
+    book_image = models.ImageField(upload_to='book_pics/', default='default_book_cover.png')
 
     user = models.ForeignKey(User, related_name='books', on_delete=models.CASCADE)
 

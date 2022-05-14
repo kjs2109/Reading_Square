@@ -14,6 +14,9 @@ class BookClub(TimeStempedModel):
 
     members = models.ManyToManyField(User, related_name='member_clubs', blank=True) 
 
+    def __str__(self):
+        return self.name 
+
 class ClubPost(TimeStempedModel):
     title = models.CharField(max_length=50)
     content = models.TextField() 
@@ -21,10 +24,16 @@ class ClubPost(TimeStempedModel):
     club = models.ForeignKey(BookClub, related_name='posts', on_delete=models.CASCADE)
     author = models.ForeignKey(User, related_name='club_posts', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title 
+
 class Comment(TimeStempedModel):
     content = models.TextField()
 
     club = models.ForeignKey(BookClub, related_name='comments', on_delete=models.CASCADE)
     post = models.ForeignKey(ClubPost, related_name='comments', on_delete=models.CASCADE)
     author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.author}: {self.content[:20]}'
 

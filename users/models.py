@@ -14,8 +14,8 @@ class User(AbstractUser):
         
     fav_verse = models.TextField(blank=True)
     bio = models.CharField(max_length=255, blank=True)
-    profile_photo = models.ImageField(blank=True)
-    benner_image = models.ImageField(blank=True)
+    profile_photo = models.ImageField(upload_to='profile_pics/', default='default_profile_pic.jpg')
+    benner_image = models.ImageField(upload_to='benner_imgs/', default='bg1.jpg')
 
     def __str__(self):
         return self.nickname
