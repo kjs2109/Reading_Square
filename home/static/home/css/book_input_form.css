@@ -1,0 +1,13 @@
+@import "global.css";
+
+body {background-color: var(--bage)}
+.post-form .book-info {justify-content: space-between;}
+.post-form .book-info .book-name,
+.post-form .book-info .book-author {width: 100%;}
+.post-form .book-info div:nth-child(2) {width: 30px; height: 100%;}
+
+.post-form .content textarea {height: 300px;}
+
+.post-form .file-content { margin: 25px 0;}
+.post-form .file-content label {background-color: var(--brown); color: white; border-radius: 5px; padding: 7px 14px;}
+.post-form .file-content input {display: none}

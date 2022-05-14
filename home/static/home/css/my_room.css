@@ -1,0 +1,25 @@
+@import "global.css";
+
+.banner {position: relative}
+.banner .banner-img {margin-top: 90px; width: 100%; height: 434px; background-size: cover;}
+
+.post-container {position: relative;}
+.post-container .add_book {position: absolute; right: 27px;}
+.post-container .add_book a {color: var(--brown); border: solid 1px var(--brown); padding: 7px 14px;}
+.post-container .post {position: relative; width: 261px; margin: 50px 25px 10px 25px;}
+.post-container .post img {width: 261px}
+.post-container .post .post-box > a {width: 261px;} 
+
+.post-container .post .post-info {transition: 0.7s ease-in-out; width: 261px; height: 80px; overflow: hidden; opacity: 0.95;}
+.post-container .post .post-info:hover {height: 400px; overflow: auto;}
+.post-container .post .book-author {margin-top: 20px; margin-bottom: 10px; color: var(--dark-gray)}
+.post-container .post .settings {position: absolute; top: 15px; right: 15px;}
+.post-container .post .settings i {color: var(--dark-gray); margin-left: 6px;}
+.post-container .post .date {position: absolute; top: 50px; right: 18px;}
+.post-container .post .book-memo {margin-top: 15px;}
+.post-container .post .select-state {position: absolute; top: 10px; right: 10px; border: 1px solid var(--brown); color: var(--brown);}
+
+
+
+.empty-message {display: flex; justify-content: center; align-items: center;  height: 200px;}
+.empty-message div {color: var(--dark-gray); font-weight: bold;}

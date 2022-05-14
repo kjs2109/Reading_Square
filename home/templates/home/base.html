@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    {% block title %}
+        <title>독서광장</title>
+    {% endblock title %}
+    
+
+    {% block style_link %}
+        
+    {% endblock style_link %}
+
+    <script src="../../static/home/js/index.js" defer></script>
+</head>
+    <body>
+        <div class="navbar">
+            <a id="logo" href="{% url 'home:home' %}">
+                <div class="logo-container">
+                    <img src="{% static 'home/images/logo-brown.png' %}">
+                    <div>독서 광장</div>
+                </div>
+            </a>
+            <ul id="menu">
+                <li><a href="#">소개</a></li>
+                <li><a href="#">독서모임</a></li>
+                <li><a href="#">게시글</a>
+                <li class="divider"><span>|</span></li>
+                {% if user.is_authenticated %}
+                    <li><a href="#">프로필</a></li>
+                    <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}">로그인</a></li>
+                    <li><a href="{% url 'account_signup' %}">회원가입</a></li>
+                {% endif %}
+            </ul>
+            <a href="#" class="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+
+        {% block content %}{% endblock content %}
+
+        <footer class="site-footer">
+            <div>READING SQUARE</div>
+        </footer>
+        <script src="https://kit.fontawesome.com/03a9c761b6.js" crossorigin="anonymous"></script>
+    </body>
+</html>

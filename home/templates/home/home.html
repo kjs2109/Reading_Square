@@ -1,0 +1,100 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+<main>
+    <div class="main-banner">
+        <div class="intro-title">독서 광장이란?</div>
+    </div>
+    <a href='{% url 'account_change_password' %}'>비밀번호 변경</a>
+    <div class="contents">
+        <h2>최근 독서모임</h2>
+        <div class="box">
+            <ul>
+                <li class="book-club">
+                    <div class="col-1">
+                        <img class='club-book-img' src="{% static 'home/images/book_2.jpg' %}" alt="독서모임 이미지">
+                    </div>
+                    <div class="col-2">
+                        <div class="book-info">
+                            <h3>야간비행</h3>
+                            <div class="book-sub-info">
+                                <span>앙투안 드 생텍쥐페리</span>
+                                <span class="date">2022.04.20</span>
+                            </div>
+                            <div class="divider"></div>
+                            <a>참여하기</a>
+                        </div>
+                        <br>
+                        <div class="club-info">
+                            <h4>어린왕자를 재밌게 읽었던 사람이라면 무조건 읽어야 하는 책!!</h4>
+                            <div style="margin-bottom: 10px; font-size: 17px;">모임 소개</div>
+                            <div class="club-intro">“인생에 해결책이란 없어. 앞으로 나아가는 힘뿐. 그 힘을 만들어내면 해결책은 뒤따라 온다네.”</div>
+                            <div class="club-detail-info">
+                                첫 번째 책은<br>  
+                                어제 소개해 드렸던 <야간비행>입니다.<br> 
+                                <br> 
+                                누구나 <어린왕자>는 읽어도 <야간비행>은 놓치기 쉬운데요. 그래서! 함께 읽어보겠습니다.<br> 
+                                분량은 짧아도 생각하고 이야기 나눌 거리가 흘러넘치는 책이니까요. <br> 
+                                <br> 
+                                글쓰는 조종사 생텍쥐페리의 시 같은 문장을 만나볼실 수 있습니다.
+                                <br>
+                                첫 번째 책은<br>  
+                                어제 소개해 드렸던 <야간비행>입니다.<br> 
+                                <br> 
+                                누구나 <어린왕자>는 읽어도 <야간비행>은 놓치기 쉬운데요. 그래서! 함께 읽어보겠습니다.<br> 
+                                분량은 짧아도 생각하고 이야기 나눌 거리가 흘러넘치는 책이니까요. <br> 
+                                <br> 
+                                글쓰는 조종사 생텍쥐페리의 시 같은 문장을 만나볼실 수 있습니다.
+                                <br>
+                                첫 번째 책은<br>  
+                                어제 소개해 드렸던 <야간비행>입니다.<br> 
+                                <br> 
+                                누구나 <어린왕자>는 읽어도 <야간비행>은 놓치기 쉬운데요. 그래서! 함께 읽어보겠습니다.<br> 
+                                분량은 짧아도 생각하고 이야기 나눌 거리가 흘러넘치는 책이니까요. <br> 
+                                <br> 
+                                글쓰는 조종사 생텍쥐페리의 시 같은 문장을 만나볼실 수 있습니다.<br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="book-club">
+                    <div class="col-1">
+                        <img class='club-book-img' src="{% static 'home/images/book_3.jpg' %}" alt="독서모임 이미지">
+                    </div>
+                    <div class="col-2">
+                        <div class="book-info">
+                            <h3>야간비행</h3>
+                            <div class="book-sub-info">
+                                <span>앙투안 드 생텍쥐페리</span>
+                                <span class="date">2022.04.20</span>
+                            </div>
+                            <div class="divider"></div>
+                            <a>참여하기</a>
+                        </div>
+                        <br>
+                        <div class="club-info">
+                            <h4>어린왕자를 재밌게 읽었던 사람이라면 무조건 읽어야 하는 책!!</h4>
+                            <div style="margin-bottom: 10px; font-size: 17px;">모임 소개</div>
+                            <div class="club-intro">“인생에 해결책이란 없어. 앞으로 나아가는 힘뿐. 그 힘을 만들어내면 해결책은 뒤따라 온다네.”</div>
+                            <div class="club-detail-info">
+                                첫 번째 책은<br>  
+                                어제 소개해 드렸던 <야간비행>입니다.<br> 
+                                <br> 
+                                누구나 <어린왕자>는 읽어도 <야간비행>은 놓치기 쉬운데요. 그래서! 함께 읽어보겠습니다.<br> 
+                                분량은 짧아도 생각하고 이야기 나눌 거리가 흘러넘치는 책이니까요. <br> 
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock content %}

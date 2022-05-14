@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block message_title %}
+        <title>독서광장</title>
+    {% endblock message_title %}
+    <link rel="stylesheet" href="{% static 'home/css/message.css' %}">
+</head>
+<body>
+    <div class="sub-header">
+        <div>
+            <a href="../index.html"><img src="{% static 'home/images/logo-no-title.png' %}"></a>
+            <h1 id="logo-title">독서광장</h1>
+        </div>
+    </div>
+
+    {% block message %}
+    {% endblock message %}
+
+</body>
+</html>

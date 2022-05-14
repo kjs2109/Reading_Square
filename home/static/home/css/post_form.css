@@ -1,0 +1,7 @@
+@import "global.css";
+
+body {background-color: var(--bage)}
+.post-form .book-info .cp-stars {position: relative; color: #FFD600; font-size: 20px;}
+
+.post-form .content textarea {height: 700px;}
+
