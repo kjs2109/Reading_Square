@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView 
+from home.views import CustomPasswordChangeView 
 
 urlpatterns = [
     # admin
@@ -23,10 +24,17 @@ urlpatterns = [
     # home
     path('', include('home.urls')),
     # allauth
+    # 이메일 인증 관련
     path(
         'email-confirmation-done/',
         TemplateView.as_view(template_name='home/accounts/emil_confirmation_done.html'), 
         name='account_email_confirmation_done'
+    ),
+    # 비밀번호 변경 관련
+    path(
+        'password/change/',
+        CustomPasswordChangeView.as_view(),
+        name='account_password_change'
     ),
     path('', include('allauth.urls')),
 ]
