@@ -138,5 +138,15 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+ACCOUNT_SIGNUP_REDIRECTION = 'home:home'
+LOGIN_REDIRECT_URL = 'home:home'
+ACCOUNT_LOGOUT_ON_GET = True 
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # username이 아닌 이메일로 인증하도록 설정(username은 닉네임과 다른 필드)
+ACCOUNT_EMAIL_REQUIRED = True 
+ACCOUNT_USER_NAME_REQUIRED = False 
+ACCOUNT_SESSION_REMEMBER = True 
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'  # allauth에서 제공하는 signup 폼이 아니라 users 앱에 정의된 SignupForm을 사용
+
+
 # Email settings 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
