@@ -1,0 +1,43 @@
+{% extends '../home/account_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block account_title %}
+  <title>로그인</title>
+{% endblock account_title %}
+
+{% block form_section %}
+  <section class="account_form">
+    <h2>로그인</h2>
+    <div class="box">
+      <form method='post'>
+        {% csrf_token %}
+        {% for error in form.non_field_errors %}
+          <div class='form-error error-message'>{{error}}</div>
+        {% endfor %}
+        <ul>
+          <li>
+            {{form.login|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:이메일'}}
+            {% for error in errors %}
+              {{error}}
+            {% endfor %}
+          </li>
+          <li>
+            {{form.password|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:비밀번호'}}
+            {% for error in errors %}
+              {{error}}
+            {% endfor %}
+          </li>
+          <li>
+            <input class="login-btn" type="submit" value="로그인">
+          </li>
+        </ul>
+        <div class="link">
+          <span><a href="{% url 'account_reset_password' %}">비밀번호 찾기</a></span>
+          <span>|</span>
+          <span><a href="{% url 'account_signup' %}">회원가입</a></span>
+        </div>
+      </form>
+    </div>
+  </section>
+{% endblock form_section %}

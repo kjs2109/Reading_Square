@@ -1,0 +1,21 @@
+{% extends '../home/message_base.html' %}
+{% load static %}
+
+{% block message_title %}
+    <title>이메일 인증 완료</title>
+{% endblock message_title %}
+
+{% block message %}
+    <div class="message">
+        <div>
+            <p>이메일 인증이 완료되었습니다.</p>
+        </div>
+        <div class="home-btn">
+            {% if user.is_authenticated %}
+                <a class="cp-button inverted button" href="{% url 'home:home' %}">홈으로 이동</a>
+            {% else %}
+                <a class="cp-button inverted button" href="{% url 'account_login' %}">로그인 하기</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock message %}

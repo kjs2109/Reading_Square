@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'home',
     'users',
+    'widget_tweaks',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -102,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -132,12 +133,15 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_SIGNUP_REDIRECTION = 'home:home'
 LOGIN_REDIRECT_URL = 'home:home'
 ACCOUNT_LOGOUT_ON_GET = True 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  # username이 아닌 이메일로 인증하도록 설정(username은 닉네임과 다른 필드)
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # username이 아닌 이메일로 로그인 하도록 설정(username은 닉네임과 다른 필드)
 ACCOUNT_EMAIL_REQUIRED = True 
 ACCOUNT_USER_NAME_REQUIRED = False 
 ACCOUNT_SESSION_REMEMBER = True 
 ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'  # allauth에서 제공하는 signup 폼이 아니라 users 앱에 정의된 SignupForm을 사용
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True 
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # 인증 메일의 링크 접속시 바로 이메일 인증 완료
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'account_email_confirmation_done' # 이메일 인증이 완료되었을 경우 redirect되는 url_name
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'account_email_confirmation_done' # 로그아웃된 상태에서 이메일 인증이 완료되었을 경우
 
 
 # Email settings 
