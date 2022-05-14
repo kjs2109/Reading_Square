@@ -94,16 +94,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'users.validators.CustomPasswordValidator',
     },
 ]
 
@@ -146,6 +137,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USER_NAME_REQUIRED = False 
 ACCOUNT_SESSION_REMEMBER = True 
 ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'  # allauth에서 제공하는 signup 폼이 아니라 users 앱에 정의된 SignupForm을 사용
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True 
 
 
 # Email settings 
