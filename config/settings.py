@@ -142,6 +142,7 @@ ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # 인증 메일의 링크 접속시 바로 이메일 인증 완료
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'account_email_confirmation_done' # 이메일 인증이 완료되었을 경우 redirect되는 url_name
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'account_email_confirmation_done' # 로그아웃된 상태에서 이메일 인증이 완료되었을 경우
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''  # account email 제목 앞에 붙는 문자열을 빈문자열로 설정 
 
 
 # Email settings 
