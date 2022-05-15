@@ -25,6 +25,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # home
     path('', include('home.urls')),
+    # posts 
+    path('posts/', include('posts.urls')),
+    # book_clubs 
+
+    # my_rooms
+
     # allauth
     # 이메일 인증 관련
     path(

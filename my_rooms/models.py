@@ -1,9 +1,9 @@
 from django.db import models
-from posts.models import TimeStempedModel
+from home.models import TimeStampedModel
 from users.models import User 
 
 # Create your models here.
-class Book(TimeStempedModel):
+class Book(TimeStampedModel):
 
     STATUS_CHOICES = (
         (1, '읽기 전'),

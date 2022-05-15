@@ -1,0 +1,63 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/post_list.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+<main>
+    <div class="post-container">
+        <div style="margin: 0 63px;">
+            <div class="post-header">
+                <h2>글 목록</h2>
+                <a href="#">글 작성</a>
+            </div>
+        </div>
+
+        {% for post in posts %}
+            <div class="post">
+                <div class="post-box">
+                    <a href="#">
+                        <img src="{{post.book.book_image.url}}">
+                        <div class="post-info">
+                            <span class="book-title">{{post.book.title}}</span>
+                            <h2 class="post-title">{{post.title}}</h2>
+                            <p class="date">{{post.update_at|date:'Y.m.d'}}</p>
+                            <div class="rating">
+                                {% for i in ''|ljust:post.book_rating %}★{% endfor %}
+                            </div>
+                            <div class="post-author">
+                                <div class='cp-avatar' style="background-image: url('{{post.author.profile_photo.url}}');"></div>
+                                <span>by <strong>{{post.author.nickname}}</strong></span>
+                            </div>
+                        </div>  
+                    </a>
+                </div>
+            </div>
+        {% empty %}
+            <div class='empty-box'>
+                <p class='empty'>아직 게시글이 없어요 :(</p>
+            </div>
+        {% endfor %}
+    <div class="clear-fix"></div>
+
+    <div class="page">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href='?page=1'>first</a></li>
+                <li class='prev'><a href='?{{page_obj.previous_page_number}}'>prev</a></li>
+            {% endif %}
+
+            <li class="mid">{{page_obj.number}}</li>
+            <span class="mid"> of </span>
+            <li class="mid"><a href="#">{{page_obj.paginator.num_pages}}</a></li>
+
+            {% if page_obj.has_next %}
+                <li class="next"><a href="?page={{ page_obj.next_page_number }}">next</a></a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">last</a></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</main>
+{% endblock content %}

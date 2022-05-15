@@ -1,10 +1,10 @@
 from django.db import models
-from posts.models import TimeStempedModel 
+from posts.models import TimeStampedModel 
 from users.models import User 
 from my_rooms.models import Book
 
 # Create your models here.
-class BookClub(TimeStempedModel):
+class BookClub(TimeStampedModel):
     name = models.CharField(max_length=50)
     intro = models.TextField(blank=True)
     rule = models.TextField(blank=True) 
@@ -17,7 +17,7 @@ class BookClub(TimeStempedModel):
     def __str__(self):
         return self.name 
 
-class ClubPost(TimeStempedModel):
+class ClubPost(TimeStampedModel):
     title = models.CharField(max_length=50)
     content = models.TextField() 
 
@@ -27,7 +27,7 @@ class ClubPost(TimeStempedModel):
     def __str__(self):
         return self.title 
 
-class Comment(TimeStempedModel):
+class Comment(TimeStampedModel):
     content = models.TextField()
 
     club = models.ForeignKey(BookClub, related_name='comments', on_delete=models.CASCADE)
@@ -35,5 +35,5 @@ class Comment(TimeStempedModel):
     author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.author}: {self.content[:20]}'
+        return f'{self.author}: {self.content}'
 
