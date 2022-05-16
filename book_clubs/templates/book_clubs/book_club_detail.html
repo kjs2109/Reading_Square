@@ -1,0 +1,100 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{club.name}} | 독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/book_club_detail.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main class="post-form">
+        <h2 class="club-name">{{club.name}}</h2>
+        <div class="club_info">
+            <div class="col-1">
+                <img class='club-book-img' src="{{club.book.book_image.url}}" alt="독서모임 이미지">
+            </div>
+            <div class="col-2">
+                <div class="book-info">
+                    <h3>{{club.book.title}}</h3>
+                    <div class="book-sub-info">
+                        <span>{{club.book.author}}</span>
+                        <span class="date">{{club.create_at|date:'Y.m.d'}}</span>
+                    </div>
+                    <div class="divider"></div>
+                    <a class="create-post" href="#">글 쓰기</a>
+                </div>
+                <br>
+                <div class="club-info">
+                    <div style="margin-bottom: 12px; font-size: 17px; font-weight: bold;">모임 소개</div>
+                    <div class="club-intro">{{club.intro|linebreaksbr}}</div>
+                    <div class="club-detail-info">
+                        {{club.rule|linebreaksbr}}
+                    </div>
+                </div>
+                <div class="delete-club">
+                    <a href='#'>독서 모임 삭제하기</a>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} ---------------------- 포스트 ----------------------------------- {% endcomment %}
+        {% for club_post in club_posts  %}
+            <div class="club-post">
+                <div class="club-post-header">
+                    <div class="header-col_1">
+                        <h3 class="post-title">{{club_post.title}}</h3>
+                        <div class="date">{{club_post.create_at|date:'Y.m.d'}}</div>
+                    </div>
+                    <div class="header-col_2">
+                        <a href="#">
+                            <img src="images/mypage-profile.jpg">
+                            <div class="user-name">{{club_post.author}}</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="content">
+                    <div class="post-content">
+                        {{club_post.content}}
+                    </div>
+                    <form>
+                        <input type="text" placeholder="의견을 남겨주세요">
+                        <input type="submit" value="전송">
+                    </form>
+                </div>
+
+                {% comment %} ------------------------- 댓글 ----------------------------------- {% endcomment %}
+
+                <div class="comment">
+                    {% for comment in comments %}
+                        {% if comment.post == club_post %}
+                            <div class="comment-box">
+                                <div class="comment-info">
+                                    <div class="user-name">{{comment.author}}</div>
+                                    <div class="date">{{comment.create_at|date:'Y.m.d'}}</div>
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+                                <div class="comment-content-box">
+                                    <div class="comment-content">
+                                        {{comment.content}}
+                                    </div>
+                                    {% if comment.author == user %}
+                                        <i class="fa fa-trash-o"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="footer">
+                    <a href="#">글 수정</a>
+                    <a href="#">글 삭제</a>
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock content %}
+

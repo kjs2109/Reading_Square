@@ -6,9 +6,9 @@ urlpatterns = [
     # book_clubs/
     path('', views.ClubListView.as_view(), name='club_list'),
     # book_clubs/1/detail/
-    
+    path('<int:club_id>/detail/', views.club_detail, name='club_detail'),
     # book_clubs/create/ 
-
+    
     # book_clubs/1/delete/ 
 
     # book_clubs/1/create_post/ 
