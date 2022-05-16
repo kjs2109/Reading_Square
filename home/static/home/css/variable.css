@@ -14,7 +14,7 @@ body {
 input {
     text-decoration: none;
     /* border: none; */
-    appearance: none;
+    /* appearance: none; */
     outline: none;
 }
 a {

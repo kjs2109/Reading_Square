@@ -19,10 +19,6 @@
 .account_form .box .info {margin-top: 15px; color: var(dark-gray);}
 .account_form .box .info a {color: var(--brown); font-weight: 600;}
 
-/* error */
-.account_form .box form .error {border: 1px solid var(--error)}
-.account_form .box form .error-message {display: block; width: 100%; text-align: center; color: var(--error); margin-bottom: 10px;}
-
 /* profile_form */
 .account_form .profile-title {font-weight: 300; margin-top: 27px;}
 .account_form .profile-title strong {font-weight: 600;}

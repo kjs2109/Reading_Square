@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>글 작성 | 독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/post_detail.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main>
+        <div class="post-header">
+            <div class="post-col1">
+                <div>
+                    <h2 class="title">{{post.title}}</h2>
+                    <date class="date">{{post.create_at|date:'Y.m.d'}}</date>
+                </div>
+            </div>
+            <div class="post-col2">
+                <div class="review-rating">
+                    <div class='cp-stars'>
+                        {% for i in ''|ljust:post.book_rating %}★{% endfor %}
+                    </div>
+                </div>
+                <a class="review-author" href="#">
+                    <img src="{{post.author.profile_photo.url}}" alt="프로필 이미지">
+                    <span>{{post.author}}</span>
+                </a>
+            </div>
+        </div>
+        <div class="content-box">
+            <p class="content">
+                {{post.content|linebreaksbr}}
+            </p>
+        </div>
+
+        <div class="footer">
+            <a class="back-link" href="{% url 'posts:posts' %}">목록으로</a>
+            <div class="buttons">
+                <a class="cp-button secondary" href="#">수정</a>
+                <a class="cp-button warn" href="#">삭제</a>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
