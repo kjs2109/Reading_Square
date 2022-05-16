@@ -100,3 +100,27 @@ def club_post_create(request, club_id):
             return redirect('clubs:club_detail', club.id)
     else:
         return redirect('account_login') 
+
+def club_post_update(request, club_id, post_id):
+    if request.user.is_authenticated:
+        club = get_object_or_404(BookClub, pk=club_id) 
+        club_post = get_object_or_404(ClubPost, pk=post_id)
+
+        if request.user != club_post.author:
+            return redirect('account_login')
+
+        if request.method == 'GET':
+            form = ClubPostForm(instance=club_post)
+            return render(request, 'book_clubs/book_club_post_form.html', {'form': form, 'clup_post': club_post, 'club': club})
+
+        elif request.method == 'POST':
+            form = ClubPostForm(request.POST) 
+            if form.is_valid():
+                club_post.title = form.cleaned_data['title']
+                club_post.content = form.cleaned_data['content']
+                club_post.save() 
+                return redirect('clubs:club_detail', club_id=club_id) 
+            return redirect('clubs:club_post_update', club_id=club_id, post_id=post_id)
+    else:
+        return redirect('account_login')
+

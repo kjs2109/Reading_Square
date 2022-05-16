@@ -9,7 +9,7 @@ main .club_info .col-2 {padding: 26px; box-sizing: border-box; min-width: 626px;
 main .club_info .col-2 h3 {font-size: 24px; color: var(--blak); margin-bottom: 10px;}
 main .club_info .col-2 .book-info {position: relative;}
 main .club_info .col-2 .book-sub-info {display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--dark-gray);}
-main .club_info .col-2 .book-sub-info .date {margin-left: 10px;}
+main .club_info .col-2 .book-sub-info .date {margin-right: 10px;}
 main .club_info .col-2 .book-info .create-post {position: absolute; top: -5px; right: 0; border: solid 1px var(--brown); color: var(--brown); font-size: 18px; font-weight: bold; padding: 7px 20px;}
 main .club_info .col-2 .club-intro {padding-left: 20px; color: var(--brown); line-height: 1.4;}
 main .club_info .col-2 .club-info { min-height: 340px;}

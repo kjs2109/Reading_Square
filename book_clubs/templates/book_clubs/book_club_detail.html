@@ -92,7 +92,7 @@
                     {% endfor %}
                 </div>
                 <div class="footer">
-                    <a href="#">글 수정</a>
+                    <a href="{% url 'clubs:club_post_update' club.id club_post.id%}">글 수정</a>
                     <a href="#">글 삭제</a>
                 </div>
             </div>

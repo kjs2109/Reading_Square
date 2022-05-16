@@ -14,7 +14,7 @@ urlpatterns = [
     # book_clubs/1/create_post/ 
     path('<int:club_id>/create_post/', views.club_post_create, name='club_post_create'),
     # book_clubs/1/update_post/1/ 
-
+    path('<int:club_id>/update_post/<int:post_id>/', views.club_post_update, name='club_post_update'),
     # book_clubs/1/delete_post/1/
 
     # book_clubs/1/posts/1/create_comment/
