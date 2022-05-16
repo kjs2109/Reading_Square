@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404, get_list_or_404
+from django.urls import reverse
 from django.views.generic import ListView 
 from .models import BookClub, ClubPost, Comment 
 from users.models import User
@@ -151,9 +152,16 @@ def comment_create(request, club_id, post_id):
                 new_comment.post = post 
                 new_comment.author = request.user 
                 new_comment.save() 
-
-                return redirect('clubs:club_detail', club_id=club_id)
+                return redirect(reverse('clubs:club_detail', kwargs={'club_id': club_id}) + '#comment-'+ str(new_comment.id))
+                # return redirect('clubs:club_detail', club_id=club_id)
     else:
         return redirect('account_login')
 
-
+def comment_delete(request, club_id, comment_id):
+    if request.user.is_authenticated:
+        comment = get_object_or_404(Comment, pk=comment_id)
+        if request.method == 'POST':
+            comment.delete() 
+        return redirect('clubs:club_detail', club_id=club_id )
+    else:
+        return redirect('account_login')

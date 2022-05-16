@@ -41,3 +41,5 @@ main .club-post .footer {margin-top: 40px;}
 main .club-post .footer a {padding: 7px 14px;}
 main .club-post .footer a:first-child {border: solid 1px var(--brown); color: var(--brown); font-weight: bold;}
 main .club-post .footer a:last-child {border: solid 1px var(--error); color: var(--error); font-weight: bold;}
+
+button {border: none; background-color: var(--bage);}

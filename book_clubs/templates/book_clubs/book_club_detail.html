@@ -78,12 +78,15 @@
                 <div class="comment">
                     {% for comment in comments %}
                         {% if comment.post == club_post %}
-                            <div class="comment-box">
+                            <div class="comment-box" id='comment-{{comment.id}}'>
                                 <div class="comment-info">
                                     <div class="user-name">{{comment.author}}</div>
                                     <div class="date">{{comment.create_at|date:'Y.m.d'}}</div>
                                     {% if comment.author == user %}
-                                        <i class="fa fa-trash-o"></i>
+                                        <form action='{% url 'clubs:comment_delete' club.id comment.id %}' method='post'>
+                                            {% csrf_token %}
+                                            <button type='submit'><i class="fa fa-trash-o"></i></button>
+                                        </form>
                                     {% endif %}
                                 </div>
                                 <div class="comment-content-box">
