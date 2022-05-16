@@ -1,6 +1,6 @@
 from django.db.models import Q 
 from django import forms 
-from .models import Comment, BookClub
+from .models import Comment, BookClub, ClubPost
 from my_rooms.models import Book
 
 class CommentForm(forms.ModelForm):
@@ -16,4 +16,9 @@ class ClubForm(forms.ModelForm):
 
     def __init__(self, user=None, *args, **kwargs):
         super(ClubForm, self).__init__(*args, **kwargs) 
-        self.fields['book'].queryset = Book.objects.filter(Q(user=user) & Q (used_club=True))
+        self.fields['book'].queryset = Book.objects.filter(Q(user=user) & Q(used_club=False))
+
+class ClubPostForm(forms.ModelForm):
+    class Meta:
+        model = ClubPost 
+        fields = ['title', 'content']

@@ -10,9 +10,9 @@ urlpatterns = [
     # book_clubs/create/ 
     path('create/', views.club_create, name='club_create'),
     # book_clubs/1/delete/ 
-
+    path('<int:club_id>/delete/', views.club_delete, name='club_delete'),
     # book_clubs/1/create_post/ 
-
+    path('<int:club_id>/create_post/', views.club_post_create, name='club_post_create'),
     # book_clubs/1/update_post/1/ 
 
     # book_clubs/1/delete_post/1/

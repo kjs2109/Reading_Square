@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404, get_list_or_40
 from django.views.generic import ListView 
 from .models import BookClub, ClubPost, Comment 
 from users.models import User
-from book_clubs.forms import CommentForm, ClubForm
+from book_clubs.forms import CommentForm, ClubForm, ClubPostForm
 
 # Create your views here.
 class ClubListView(ListView):
@@ -27,7 +27,7 @@ def club_detail(request, club_id):
         elif request.method == 'POST':  # book_club에 참여하는 로직 
             # ManyToMany 관계에서 추가는 add() 삭제는 remove() 사용. db에 저장까지 된다.
             if user in club.members.all():
-                club.memebers.remove(request.user)
+                club.members.remove(request.user)
                 return redirect('clubs:club_list')
             
             else:
@@ -64,3 +64,39 @@ def club_create(request):
         
     else:
         return render(request, 'book_clubs/login_required/login_required_create.html')
+
+def club_delete(request, club_id):
+    if request.user.is_authenticated:
+        club = get_object_or_404(BookClub, pk=club_id)
+        if request.user != club.host:
+            return redirect('clubs:club_detail', club_id=club.id)
+
+        if request.method == 'GET':
+            return render(request, 'book_clubs/club_confirm_delete.html', {'club': club})
+
+        elif request.method == 'POST':
+            club.book.used_club = False
+            club.book.save() 
+            club.delete()
+            return redirect('clubs:clubs_detail', club_id=club.id)
+    else:
+        return redirect('account_login')
+
+
+def club_post_create(request, club_id):
+    if request.user.is_authenticated:
+        club = get_object_or_404(BookClub, pk=club_id)
+        if request.method == 'GET':
+            form = ClubPostForm() 
+            return render(request, 'book_clubs/book_club_post_form.html', {'form': form, 'club': club})
+
+        elif request.method == 'POST':
+            form = ClubPostForm(request.POST)
+            if form.is_valid():
+                new_club_post = form.save(commit=False)
+                new_club_post.author = request.user
+                new_club_post.club = club 
+                new_club_post.save() 
+            return redirect('clubs:club_detail', club.id)
+    else:
+        return redirect('account_login') 

@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>독서모임 글 작성 | 독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/post_form.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main class="post-form">
+        <div class="post-header">
+            <h2>글쓰기</h2>
+        </div>
+        <form class="post-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="title">
+                {{form.title|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:제목'}}
+                {% for error in form.name.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class="book-info non-bottom">
+            </div>
+            <div class="content">
+                {{form.content|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:내용을 작성해 주세요'}}
+                {% for error in form.name.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+
+            <div class="buttons">
+                <a class="cp-button" href="#">돌아가기</a>
+                <input class="cp-button" type="submit" value='작성 완료'>
+            </div>
+        </form>
+    </main>
+{% endblock content %}
+
+

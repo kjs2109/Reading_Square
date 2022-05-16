@@ -24,7 +24,7 @@
                         <span class="date">{{club.create_at|date:'Y.m.d'}}</span>
                     </div>
                     <div class="divider"></div>
-                    <a class="create-post" href="#">글 쓰기</a>
+                    <a class="create-post" href="{% url 'clubs:club_post_create' club.id %}">글 쓰기</a>
                 </div>
                 <br>
                 <div class="club-info">
@@ -35,7 +35,9 @@
                     </div>
                 </div>
                 <div class="delete-club">
-                    <a href='#'>독서 모임 삭제하기</a>
+                    {% if club.host == user %}
+                        <a href='{% url 'clubs:club_delete' club.id %}'>독서모임 삭제하기</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -50,7 +52,7 @@
                     </div>
                     <div class="header-col_2">
                         <a href="#">
-                            <img src="images/mypage-profile.jpg">
+                            <img src="{{club_post.author.profile_photo.url}}">
                             <div class="user-name">{{club_post.author}}</div>
                         </a>
                     </div>
@@ -58,7 +60,7 @@
                 <div class="divider"></div>
                 <div class="content">
                     <div class="post-content">
-                        {{club_post.content}}
+                        {{club_post.content|linebreaksbr}}
                     </div>
                     <form>
                         <input type="text" placeholder="의견을 남겨주세요">
@@ -79,7 +81,7 @@
                                 </div>
                                 <div class="comment-content-box">
                                     <div class="comment-content">
-                                        {{comment.content}}
+                                        {{comment.content|linebreaksbr}}
                                     </div>
                                     {% if comment.author == user %}
                                         <i class="fa fa-trash-o"></i>
