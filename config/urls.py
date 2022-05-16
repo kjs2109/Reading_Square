@@ -32,10 +32,15 @@ urlpatterns = [
     # my_rooms
 
     # allauth
+    path(
+        'login_required/', 
+        TemplateView.as_view(template_name='account/login_required.html'),
+        name='login_required'
+    ),
     # 이메일 인증 관련
     path(
         'email-confirmation-done/',
-        TemplateView.as_view(template_name='home/accounts/emil_confirmation_done.html'), 
+        TemplateView.as_view(template_name='account/email-confirmation-done.html'), 
         name='account_email_confirmation_done'
     ),
     # 비밀번호 변경 관련

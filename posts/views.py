@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView  
+from django.views.generic import ListView, DetailView, CreateView, UpdateView  
 from posts.models import Post
 from posts.forms import PostForm
 
@@ -49,6 +49,40 @@ def post_create(request):
         return render(request, 'posts/post_form.html', {'form': form})
         
     else:
-        return redirect('account_login')
+        return redirect('login_required')
 
+# class PostUpdateView(UpdateView):
+#     model = Post 
+#     form_class = PostForm 
+#     template_name = 'posts/post_form.html'
+#     pk_url_kwarg = 'post_id' 
 
+#     def get_form(self, form_class=None):
+#         form_class = PostForm(user=self.request.user)
+#         return form_class
+
+#     def get_success_url(self):
+#         return reverse('posts:post_detail', kwargs={'post_id', self.object.id})
+
+def post_update(request, post_id):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=post_id)
+
+        if request.user != post.author:
+            return redirect('posts:posts')
+
+        if request.method == 'GET':
+            form = PostForm(instance=post, user=request.user)
+            return render(request, 'posts/post_form.html', {'form': form, 'post': post})
+        
+        elif request.method == 'POST':
+            form = PostForm(request.user, request.POST) 
+            if form.is_valid():
+                post.title = form.cleaned_data['title']
+                post.content = form.cleaned_data['content']
+                post.book_rating = form.cleaned_data['book_rating']
+                post.book = post.book
+                post.save() 
+                return redirect('posts:post_detail', post_id=post_id)
+    else:
+        return redirect('login_required')

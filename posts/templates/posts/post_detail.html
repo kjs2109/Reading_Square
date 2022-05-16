@@ -39,8 +39,10 @@
         <div class="footer">
             <a class="back-link" href="{% url 'posts:posts' %}">목록으로</a>
             <div class="buttons">
-                <a class="cp-button secondary" href="#">수정</a>
-                <a class="cp-button warn" href="#">삭제</a>
+                {% if user == post.author %}
+                    <a class="cp-button secondary" href="{% url 'posts:post_update' post.id %}">수정</a>
+                    <a class="cp-button warn" href="#">삭제</a>
+                {% endif %}
             </div>
         </div>
     </main>

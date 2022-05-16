@@ -3,7 +3,11 @@
 {% load widget_tweaks %}
 
 {% block title %}
-    <title>글 작성 | 독서광장</title>
+    {% if post %}
+        <title>{{post.title}} | 독서광장</title>
+    {% else %}
+        <title>글 작성 | 독서광장</title>
+    {% endif %}
 {% endblock title %}
 
 {% block style_link %}
@@ -13,7 +17,11 @@
 {% block content %}
     <main class='post-form'>
         <div class="post-header">
-            <h2>글쓰기</h2>
+            {% if post %}
+                <h2>글 수정</h2>
+            {% else %}
+                <h2>글쓰기</h2>
+            {% endif %}
         </div>
         <form class="post-form" method="post" autocomplete="off">
             {% csrf_token %}
@@ -44,7 +52,11 @@
 
             <div class="buttons">
                 <a class="cp-button" href="{% url 'posts:posts' %}">돌아가기</a>
-                <input class="cp-button" type="submit" vlaue='작성완료'>
+                {% if post %}
+                    <input class="cp-button" type="submit" value='수정완료'>
+                {% else %}
+                    <input class="cp-button" type="submit" value='작성완료'>
+                {% endif %}
             </div>
         </form>
     </main>
