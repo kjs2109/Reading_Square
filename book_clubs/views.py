@@ -139,5 +139,21 @@ def club_post_delete(request, club_id, post_id):
     else:
         return redirect('account_login')
 
+def comment_create(request, club_id, post_id):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            club = get_object_or_404(BookClub, pk=club_id)
+            post = get_object_or_404(ClubPost, pk=post_id)
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                new_comment = comment_form.save(commit=False) 
+                new_comment.club = club 
+                new_comment.post = post 
+                new_comment.author = request.user 
+                new_comment.save() 
+
+                return redirect('clubs:club_detail', club_id=club_id)
+    else:
+        return redirect('account_login')
 
 

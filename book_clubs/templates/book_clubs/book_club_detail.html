@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}
     <title>{{club.name}} | 독서광장</title>
@@ -62,9 +63,13 @@
                     <div class="post-content">
                         {{club_post.content|linebreaksbr}}
                     </div>
-                    <form>
-                        <input type="text" placeholder="의견을 남겨주세요">
-                        <input type="submit" value="전송">
+                    <form action='{% url 'clubs:comment_create' club.id club_post.id %}' method='post' autocomplete='off'>
+                        {% csrf_token %}
+                        {{comment_form.content|attr:'placeholder:의견을 남겨주세요'|add_class:'comment'|add_error_class:'error'}}
+                        {% for error in comment_form.content.errors %}
+                            <div class='error-message'>{{error}}</div>
+                        {% endfor %}
+                        <input class='input' type="submit" value="전송">
                     </form>
                 </div>
 
@@ -77,15 +82,14 @@
                                 <div class="comment-info">
                                     <div class="user-name">{{comment.author}}</div>
                                     <div class="date">{{comment.create_at|date:'Y.m.d'}}</div>
-                                    <i class="fa fa-trash-o"></i>
+                                    {% if comment.author == user %}
+                                        <i class="fa fa-trash-o"></i>
+                                    {% endif %}
                                 </div>
                                 <div class="comment-content-box">
                                     <div class="comment-content">
                                         {{comment.content|linebreaksbr}}
                                     </div>
-                                    {% if comment.author == user %}
-                                        <i class="fa fa-trash-o"></i>
-                                    {% endif %}
                                 </div>
                             </div>
                         {% endif %}

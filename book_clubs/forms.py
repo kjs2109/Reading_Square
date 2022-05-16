@@ -7,6 +7,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment 
         fields = ['content']
+        widgets = {
+            'content': forms.TextInput,
+        }
 
 # 유저 별로 맞춤형으로 폼을 만들수 있도록 user 정보를 추가로 입력 받는다.
 class ClubForm(forms.ModelForm):
