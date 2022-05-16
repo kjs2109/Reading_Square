@@ -1,0 +1,17 @@
+{% extends 'home/message_base.html' %}
+{% load static %}
+
+{% block message %}
+    <div class="message">
+        <div>
+            <p>정말 [{{post.title}}]를(을) 삭제하시겠습니까?</p>
+        </div>
+        <div class="delete-confirm">
+            <form method='post'>
+                {% csrf_token %}
+                <button type='submit' class="cp-btn delete-btn">삭제</button>
+            </form>
+            <a class="cp-btn" href="{% url 'posts:post_detail' post.id %}">취소</a>
+        </div>
+    </div>
+{% endblock message %}

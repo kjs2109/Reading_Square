@@ -86,3 +86,20 @@ def post_update(request, post_id):
                 return redirect('posts:post_detail', post_id=post_id)
     else:
         return redirect('login_required')
+
+
+def post_delete(request, post_id):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=post_id)
+        if request.user != post.author:
+            return redirect('posts:posts') 
+
+        if request.method == 'GET':
+            return render(request, 'posts/post_confirm_delete.html', {'post': post})
+
+        elif request.method == 'POST':
+            post.delete() 
+            return redirect('posts:posts')
+    
+    else:
+        return redirect('login_required')
