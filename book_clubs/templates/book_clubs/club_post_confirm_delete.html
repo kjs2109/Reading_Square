@@ -1,0 +1,17 @@
+{% extends 'home/message_base.html' %}
+{% load static %}
+
+{% block message %}
+    <div class="message">
+        <div>
+            <p>정말 <strong>[{{club_post.title}}]</strong>를(을) 삭제하시겠습니까?</p>
+        </div>
+        <div class="delete-confirm">
+            <form method='post'>
+                {% csrf_token %}
+                <button type='submit' class="cp-btn delete-btn">삭제</button>
+            </form>
+            <a class="cp-btn" href="{% url 'clubs:club_detail' club_post.club.id %}">취소</a>
+        </div>
+    </div>
+{% endblock message %}

@@ -124,3 +124,20 @@ def club_post_update(request, club_id, post_id):
     else:
         return redirect('account_login')
 
+def club_post_delete(request, club_id, post_id):
+    if request.user.is_authenticated:
+        club_post = get_object_or_404(ClubPost, pk=post_id)
+        # club = get_object_or_404(pk=club_id)
+        if club_post.author != request.user:
+            return redirect('clubs:club_detail', club_id=club_id)
+
+        if request.method == 'GET':
+            return render(request, 'book_clubs/club_post_confirm_delete.html', {'club_post': club_post})
+        elif request.method == 'POST':
+            club_post.delete() 
+            return redirect('clubs:club_detail', club_id=club_id)
+    else:
+        return redirect('account_login')
+
+
+
