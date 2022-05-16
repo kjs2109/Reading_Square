@@ -43,7 +43,9 @@ def post_create(request):
             if form.is_valid():
                 new_post = form.save(commit=False)
                 new_post.author = request.user 
+                new_post.book.used_post = True 
                 new_post.save() 
+                new_post.book.save()
                 return redirect('posts:post_detail', post_id=new_post.id)
 
         return render(request, 'posts/post_form.html', {'form': form})
@@ -83,6 +85,7 @@ def post_update(request, post_id):
                 post.book_rating = form.cleaned_data['book_rating']
                 post.book = post.book
                 post.save() 
+                post.book.save()
                 return redirect('posts:post_detail', post_id=post_id)
     else:
         return redirect('login_required')
@@ -98,6 +101,7 @@ def post_delete(request, post_id):
             return render(request, 'posts/post_confirm_delete.html', {'post': post})
 
         elif request.method == 'POST':
+            post.book.used_post = False 
             post.delete() 
             return redirect('posts:posts')
     

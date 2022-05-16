@@ -1,3 +1,4 @@
+from django.db.models import Q 
 from django import forms 
 from .models import Comment, BookClub
 from my_rooms.models import Book
@@ -15,4 +16,4 @@ class ClubForm(forms.ModelForm):
 
     def __init__(self, user=None, *args, **kwargs):
         super(ClubForm, self).__init__(*args, **kwargs) 
-        self.fields['book'].queryset = Book.objects.filter(user=user)
+        self.fields['book'].queryset = Book.objects.filter(Q(user=user) & Q (used_club=True))

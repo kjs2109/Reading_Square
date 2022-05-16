@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django import forms 
 from posts.models import Post 
 from my_rooms.models import Book
@@ -16,4 +17,4 @@ class PostForm(forms.ModelForm):
     # 입력 받은 유저 정보는 해당 유저의 책 정보만 가져오는데 사용된다.
     def __init__(self, user=None, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['book'].queryset = Book.objects.filter(user=user)
+        self.fields['book'].queryset = Book.objects.filter(Q(user=user) & Q(used_post = False))

@@ -55,7 +55,9 @@ def club_create(request):
             if form.is_valid():
                 new_club = form.save(commit=False)
                 new_club.host = request.user 
+                new_club.book.used_club = True 
                 new_club.save() 
+                new_club.book.save() 
                 return redirect('clubs:club_list') 
             
         return render(request, 'book_clubs/create_book_club_form.html', {'form': form})

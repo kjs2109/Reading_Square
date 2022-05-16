@@ -17,6 +17,9 @@ class Book(TimeStampedModel):
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     book_image = models.ImageField(upload_to='book_pics/', default='default_book_cover.png')
 
+    used_club = models.BooleanField(default=False)
+    used_post = models.BooleanField(default=False)
+
     user = models.ForeignKey(User, related_name='books', on_delete=models.CASCADE)
 
     def __str__(self):

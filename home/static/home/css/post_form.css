@@ -5,3 +5,5 @@ body {background-color: var(--bage)}
 
 .post-form .content textarea {height: 700px;}
 
+.post-form .non-bottom {border-bottom: none; display: flex; flex-direction: row; align-items: center;}
+
