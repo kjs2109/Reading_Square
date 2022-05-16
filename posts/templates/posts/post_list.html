@@ -51,7 +51,7 @@
 
             <li class="mid">{{page_obj.number}}</li>
             <span class="mid"> of </span>
-            <li class="mid"><a href="#">{{page_obj.paginator.num_pages}}</a></li>
+            <li class="mid">{{page_obj.paginator.num_pages}}</li>
 
             {% if page_obj.has_next %}
                 <li class="next"><a href="?page={{ page_obj.next_page_number }}">next</a></a></li>

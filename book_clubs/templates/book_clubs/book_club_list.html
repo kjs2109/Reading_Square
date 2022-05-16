@@ -1,0 +1,74 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>독서모임</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/book_club_list.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main>
+        <div class="contents">
+            <div class="club-list-header">
+                <h2>독서모임</h2>
+                <a href="#">독서모임 만들기</a>
+            </div>
+            <div class="box">
+                <ul>
+                    {% for club in clubs %}
+                        <li class="book-club">
+                            <div class="col-1">
+                                <img class='club-book-img' src="{{club.book.book_image.url}}" alt="독서모임 이미지">
+                            </div>
+                            <div class="col-2">
+                                <div class="book-info">
+                                    <h3>{{club.book.title}}</h3>
+                                    <div class="book-sub-info">
+                                        <span>{{club.book.author}}</span>
+                                        <span class="date">{{club.create_at|date:'Y.m.d'}}</span>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <a>참여하기</a>
+                                </div>
+                                <br>
+                                <div class="club-info">
+                                    <h4>{{club.name}}</h4>
+                                    <div style="margin-bottom: 10px; font-size: 17px;">모임 소개</div>
+                                    <div class="club-intro">{{club.intro|linebreaksbr}}</div>
+                                    <div class="club-detail-info">
+                                        {{club.rule|linebreaksbr}}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% empty %}
+                        <div class='empty-box'>
+                            <p class='empty'>아직 만들어진 독서모임이 없어요 :(</p>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="page">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href='?page=1'>first</a></li>
+                    <li class='prev'><a href='?{{page_obj.previous_page_number}}'>prev</a></li>
+                {% endif %}
+    
+                <li class="mid">{{page_obj.number}}</li>
+                <span class="mid"> of </span>
+                <li class="mid">{{page_obj.paginator.num_pages}}</li>
+    
+                {% if page_obj.has_next %}
+                    <li class="next"><a href="?page={{ page_obj.next_page_number }}">next</a></a></li>
+                    <li><a href="?page={{ page_obj.paginator.num_pages }}">last</a></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </main>
+{% endblock content %}
+

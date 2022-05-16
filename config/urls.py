@@ -28,7 +28,7 @@ urlpatterns = [
     # posts 
     path('posts/', include('posts.urls')),
     # book_clubs 
-
+    path('book_clubs/', include('book_clubs.urls')),
     # my_rooms
 
     # allauth
