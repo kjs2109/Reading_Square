@@ -1,0 +1,49 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>독서모임 만들기 | 독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/create_book_club_form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="post-form">
+        <div class="post-header">
+            <h2>독서 모임 만들기</h2>
+        </div>
+        <form class="post-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="title">
+                {{form.name|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:독서모임 이름'}}
+                {% for error in form.name.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class="book-info">
+                {{form.book|add_class:'book-select'}}
+            </div>
+            <div class="content book-intro">
+                {{form.intro|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:책을 간단히 소개해 주세요'}}
+                {% for error in form.intro.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class="content">
+                {{form.rule|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:모임을 소개해 주세요(주제, 목표, 규칙 등)'}}
+                {% for error in form.intro.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class="buttons">
+                <a class="cp-button" href="#">돌아가기</a>
+                <button class="cp-button" type="submit">만들기</button>
+            </div>
+        </form>
+    </main>
+{% endblock content %}
+
+

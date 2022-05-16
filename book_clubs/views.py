@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404, get_list_or_40
 from django.views.generic import ListView 
 from .models import BookClub, ClubPost, Comment 
 from users.models import User
-from book_clubs.forms import CommentForm
+from book_clubs.forms import CommentForm, ClubForm
 
 # Create your views here.
 class ClubListView(ListView):
@@ -40,6 +40,25 @@ def club_detail(request, club_id):
             {'club': club, 'club_posts': club_posts, 'comments': club_post_comment, 'comment_form': comment_form}
         )
 
-    
     else:
-        return redirect('login_required')
+        return render(request, 'book_clubs/login_required/login_required_enter.html')
+
+def club_create(request):
+    if request.user.is_authenticated:
+        user = get_object_or_404(User, pk=request.user.id)
+
+        if request.method == 'GET':
+            form = ClubForm(user=user) 
+
+        elif request.method == 'POST':
+            form = ClubForm(user, request.POST)
+            if form.is_valid():
+                new_club = form.save(commit=False)
+                new_club.host = request.user 
+                new_club.save() 
+                return redirect('clubs:club_list') 
+            
+        return render(request, 'book_clubs/create_book_club_form.html', {'form': form})
+        
+    else:
+        return render(request, 'book_clubs/login_required/login_required_create.html')

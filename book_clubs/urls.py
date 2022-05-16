@@ -8,7 +8,7 @@ urlpatterns = [
     # book_clubs/1/detail/
     path('<int:club_id>/detail/', views.club_detail, name='club_detail'),
     # book_clubs/create/ 
-    
+    path('create/', views.club_create, name='club_create'),
     # book_clubs/1/delete/ 
 
     # book_clubs/1/create_post/ 
