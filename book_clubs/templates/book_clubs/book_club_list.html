@@ -69,9 +69,11 @@
                     <li class='prev'><a href='?{{page_obj.previous_page_number}}'>prev</a></li>
                 {% endif %}
     
-                <li class="mid">{{page_obj.number}}</li>
-                <span class="mid"> of </span>
-                <li class="mid">{{page_obj.paginator.num_pages}}</li>
+                {% if page_obj %}
+                    <li class="mid">{{page_obj.number}}</li>
+                        <span class="mid"> of </span>
+                    <li class="mid">{{page_obj.paginator.num_pages}}</li>
+                {% endif %}
     
                 {% if page_obj.has_next %}
                     <li class="next"><a href="?page={{ page_obj.next_page_number }}">next</a></a></li>

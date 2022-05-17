@@ -14,3 +14,12 @@ def profile(request, user_id):
         return render(request, 'users/profile.html', {'profile_user': profile_user, 'user_posts': user_posts, 'count_readed_book': count_readed_book})
     else:
         return render(request, 'users/login_required.html')
+
+def post_list(request, user_id):
+    if request.user.is_authenticated:
+        profile_user = get_object_or_404(User, pk=user_id)
+        user_post_list = Post.objects.filter(author=profile_user)
+        return render(request, 'users/user_post_list.html', {'profile_user': profile_user, 'posts': user_post_list})
+
+    else:
+        return render(request, 'users/login_required.html')

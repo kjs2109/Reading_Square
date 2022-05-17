@@ -40,7 +40,7 @@
             <div style="margin: 0 63px;">
                 <div class="post-header">
                     <h2>유저1님의 최신 글 목록<span>({{profile_user.posts.count}})</span></h2> 
-                    <a href="#">글 전체 보기</a>
+                    <a href="{% url 'users:user_post_list' profile_user.id %}">글 전체 보기</a>
                 </div>
             </div>
             {% for post in user_posts %}
