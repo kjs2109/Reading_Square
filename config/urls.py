@@ -30,7 +30,9 @@ urlpatterns = [
     # book_clubs 
     path('book_clubs/', include('book_clubs.urls')),
     # my_rooms
-
+    
+    # users
+    path('users/', include('users.urls')),
     # allauth
     path(
         'login_required/', 

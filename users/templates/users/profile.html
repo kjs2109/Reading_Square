@@ -1,0 +1,142 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{profile_user.nickname}}님의 프로필</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/profile.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <section class="banner">
+        <div class='banner-img' style="background-image: url('{{profile_user.benner_image.url}}');">
+            <div class="intro-title">{{profile_user.fav_verse|linebreaksbr}}</div>
+        </div>
+        <div class="profile-box">
+            <div class="profile-col1">
+                <img src="{{profile_user.profile_photo.url}}">
+                <div class="book-count">올해 총 <strong>{{count_readed_book}}권</strong>의<br>책을 읽었습니다.</div>
+                <a href="#">내 책방</a>
+            </div>
+            <div class="user-info">
+                <div class="nickname">{{profile_user.nickname}}</div>
+                {% if profile_user.bio %}
+                    <div class="self-intro">{{profile_user.bio}}</div>
+                {% endif %}
+                <div class="profile-setting">
+                    <a href="#">프로필 수정</a>
+                    <span>|</span>
+                    <a href="#">비밀번호 변경</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="space"></div>
+        <div class="post-container">
+            <div style="margin: 0 63px;">
+                <div class="post-header">
+                    <h2>유저1님의 최신 글 목록<span>({{profile_user.posts.count}})</span></h2> 
+                    <a href="#">글 전체 보기</a>
+                </div>
+            </div>
+            {% for post in user_posts %}
+                <div class="post">
+                    <div class="post-box">
+                        <a href="{% url 'posts:post_detail' post.id %}">
+                            <img src="{{post.book.book_image.url}}">
+                            <div class="post-info">
+                                <span class="book-title">{{post.book.title}}</span>
+                                <h2 class="post-title">{{post.title}}</h2>
+                                <p class="date">{{post.create_at|date:'Y.m.d'}}</p>
+                                <div class="rating">
+                                    {% for i in ''|ljust:post.book_rating %}★{% endfor %}
+                                </div>
+                                <div class="post-author">
+                                    <div class='cp-avatar' style="background-image: url('{{post.author.profile_photo}}');"></div>
+                                    <span>by <storn>{{post.author.nickname}}</storn></span>
+                                </div>
+                            </div>  
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-message">
+                    <div>아직 게시된 글이 없습니다</div>
+                </div>
+            {% endfor %}
+ 
+        <div class="clear-fix"></div>
+
+        <div class="post-container">
+            <div style="margin: 0 63px;">
+                <div class="post-header">
+                    <h2>유저1님이 만든 모임</h2>
+                </div>
+            </div>
+
+            {% for host_club in profile_user.book_clubs.all %}
+                <div class="post">
+                    <div class="post-box">
+                        <a href="{% url 'clubs:club_detail' host_club.id %}">
+                            <img src="{{host_club.book.book_image.url}}">
+                            <div class="post-info">
+                                <span class="book-title">{{host_club.book.title}}</span>
+                                <h2 class="post-title">{{host_club.name}}</h2>
+                                <p class="date">{{host_club.create_at|date:'Y.m.d'}}</p>
+                                {% comment %} <div class="rating">★★★★★</div> {% endcomment %}
+                                <div class="post-author">
+                                    <div class='cp-avatar' style="background-image: url('{{host_club.host.profile_photo}}');"></div>
+                                    <span>HOST: <storn>{{host_club.host.nickname}}</storn></span>
+                                </div>
+                            </div>  
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-message">
+                    <div>아직 만든 모임이 없습니다</div>
+                </div>
+            {% endfor %}
+
+        <div class="clear-fix"></div>
+
+        <div class="post-container">
+            <div style="margin: 0 63px;">
+                <div class="post-header">
+                    <h2>유저1님이 참여하는 모임</h2>
+                </div>
+            </div>
+            {% for member_club in member_clubs %}
+                <div class="post">
+                    <div class="post-box">
+                        <a href="{% url 'clubs:club_detail' member_club.id %}">
+                            <img src="{{member_club.book.book_image.url}}">
+                            <div class="post-info">
+                                <span class="book-title">{{member_club.book.title}}</span>
+                                <h2 class="post-title">{{member_club.name}}</h2>
+                                <p class="date">{{member_club.create_at}}</p>
+                                {% comment %} <div class="rating">★★★★★</div> {% endcomment %}
+                                <div class="post-author">
+                                    {% comment %} <div class='cp-avatar' style="background-image: url('{{member_club.book.book_image.url}}');"></div> {% endcomment %}
+                                    <span>HOST: <storn>{{member_club.host.nickname}}</storn></span>
+                                </div>
+                            </div>  
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-message">
+                    <div>아직 참여하는 모임이 없습니다</div>
+                </div>
+            {% endfor %}
+
+        <div class="clear-fix"></div>
+    </main>
+{% endblock content %}
+
+
+
