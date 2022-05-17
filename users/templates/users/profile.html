@@ -87,10 +87,9 @@
                                 <span class="book-title">{{host_club.book.title}}</span>
                                 <h2 class="post-title">{{host_club.name}}</h2>
                                 <p class="date">{{host_club.create_at|date:'Y.m.d'}}</p>
-                                {% comment %} <div class="rating">★★★★★</div> {% endcomment %}
                                 <div class="post-author">
                                     <div class='cp-avatar' style="background-image: url('{{host_club.host.profile_photo}}');"></div>
-                                    <span>HOST: <storn>{{host_club.host.nickname}}</storn></span>
+                                    <span>방장: <storn>{{host_club.host.nickname}}</storn></span>
                                 </div>
                             </div>  
                         </a>
@@ -110,7 +109,7 @@
                     <h2>유저1님이 참여하는 모임</h2>
                 </div>
             </div>
-            {% for member_club in member_clubs %}
+            {% for member_club in profile_user.member_clubs.all %}
                 <div class="post">
                     <div class="post-box">
                         <a href="{% url 'clubs:club_detail' member_club.id %}">
@@ -118,11 +117,9 @@
                             <div class="post-info">
                                 <span class="book-title">{{member_club.book.title}}</span>
                                 <h2 class="post-title">{{member_club.name}}</h2>
-                                <p class="date">{{member_club.create_at}}</p>
-                                {% comment %} <div class="rating">★★★★★</div> {% endcomment %}
+                                <p class="date">{{member_club.create_at|date:'Y.m.d'}}</p>
                                 <div class="post-author">
-                                    {% comment %} <div class='cp-avatar' style="background-image: url('{{member_club.book.book_image.url}}');"></div> {% endcomment %}
-                                    <span>HOST: <storn>{{member_club.host.nickname}}</storn></span>
+                                    <span>방장: <storn>{{member_club.host.nickname}}</storn></span>
                                 </div>
                             </div>  
                         </a>

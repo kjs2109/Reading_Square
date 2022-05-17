@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from posts.models import Post 
 from users.models import User
 from my_rooms.models import Book
@@ -19,7 +20,12 @@ def post_list(request, user_id):
     if request.user.is_authenticated:
         profile_user = get_object_or_404(User, pk=user_id)
         user_post_list = Post.objects.filter(author=profile_user)
-        return render(request, 'users/user_post_list.html', {'profile_user': profile_user, 'posts': user_post_list})
+        paginator = Paginator(user_post_list, 9)
+        curr_page_number = request.GET.get('page')
+        if curr_page_number is None:
+            curr_page_number = 1 
+        page = paginator.page(curr_page_number)
+        return render(request, 'users/user_post_list.html', {'profile_user': profile_user, 'page': page})
 
     else:
         return render(request, 'users/login_required.html')

@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        {% for post in posts %}
+        {% for post in page.object_list %}
             <div class="post">
                 <div class="post-box">
                     <a href="{% url 'posts:post_detail' post.id %}">
@@ -39,7 +39,7 @@
             </div>
         {% empty %}
             <div class='empty-box'>
-                <p class='empty'>아직 게시한 글이 없어요 :(</p>
+                <p class='empty'>아직 작성한 글이 없어요 :(</p>
             </div>
         {% endfor %}
     <div class="clear-fix"></div>

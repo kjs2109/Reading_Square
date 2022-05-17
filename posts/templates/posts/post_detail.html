@@ -24,7 +24,7 @@
                         {% for i in ''|ljust:post.book_rating %}★{% endfor %}
                     </div>
                 </div>
-                <a class="review-author" href="#">
+                <a class="review-author" href="{% url 'users:profile' post.author.id %}">
                     <img src="{{post.author.profile_photo.url}}" alt="프로필 이미지">
                     <span>{{post.author}}</span>
                 </a>
