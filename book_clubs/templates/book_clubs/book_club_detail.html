@@ -52,7 +52,7 @@
                         <div class="date">{{club_post.create_at|date:'Y.m.d'}}</div>
                     </div>
                     <div class="header-col_2">
-                        <a href="#">
+                        <a href="{% url 'users:profile' club_post.author.id %}">
                             <img src="{{club_post.author.profile_photo.url}}">
                             <div class="user-name">{{club_post.author}}</div>
                         </a>

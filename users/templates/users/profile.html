@@ -18,17 +18,21 @@
             <div class="profile-col1">
                 <img src="{{profile_user.profile_photo.url}}">
                 <div class="book-count">올해 총 <strong>{{count_readed_book}}권</strong>의<br>책을 읽었습니다.</div>
-                <a href="#">내 책방</a>
+                {% if profile_user == user %}
+                    <a href="#">내 책방</a>
+                {% endif %}
             </div>
             <div class="user-info">
                 <div class="nickname">{{profile_user.nickname}}</div>
                 {% if profile_user.bio %}
-                    <div class="self-intro">{{profile_user.bio}}</div>
+                    <div class="self-intro">{{profile_user.bio|linebreaksbr}}</div>
                 {% endif %}
                 <div class="profile-setting">
-                    <a href="#">프로필 수정</a>
-                    <span>|</span>
-                    <a href="#">비밀번호 변경</a>
+                    {% if profile_user == user %}
+                        <a href="{% url 'users:profile_update' %}">프로필 수정</a>
+                        <span>|</span>
+                        <a href="{% url 'account_change_password' %}">비밀번호 변경</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -39,8 +43,10 @@
         <div class="post-container">
             <div style="margin: 0 63px;">
                 <div class="post-header">
-                    <h2>유저1님의 최신 글 목록<span>({{profile_user.posts.count}})</span></h2> 
-                    <a href="{% url 'users:user_post_list' profile_user.id %}">글 전체 보기</a>
+                    <h2>{{profile_user.nickname}}님의 최신 글 목록<span>({{profile_user.posts.count}})</span></h2> 
+                    {% if profile_user.posts %}
+                        <a href="{% url 'users:user_post_list' profile_user.id %}">글 전체 보기</a>
+                    {% endif %}
                 </div>
             </div>
             {% for post in user_posts %}
@@ -65,7 +71,7 @@
                 </div>
             {% empty %}
                 <div class="empty-message">
-                    <div>아직 게시된 글이 없습니다</div>
+                    <div>아직 작성된 글이 없습니다</div>
                 </div>
             {% endfor %}
  
@@ -74,7 +80,7 @@
         <div class="post-container">
             <div style="margin: 0 63px;">
                 <div class="post-header">
-                    <h2>유저1님이 만든 모임</h2>
+                    <h2>{{profile_user.nickname}}님이 만든 모임</h2>
                 </div>
             </div>
 
@@ -106,7 +112,7 @@
         <div class="post-container">
             <div style="margin: 0 63px;">
                 <div class="post-header">
-                    <h2>유저1님이 참여하는 모임</h2>
+                    <h2>{{profile_user.nickname}}님이 참여하는 모임</h2>
                 </div>
             </div>
             {% for member_club in profile_user.member_clubs.all %}

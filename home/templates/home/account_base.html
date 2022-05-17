@@ -11,7 +11,9 @@
     <title>회원가입</title>
   {% endblock account_title %}
 
-  <link rel="stylesheet" href="{% static 'home/css/account_form.css' %}">
+  {% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/account_form.css' %}">
+  {% endblock style_link %}
 </head>
 <body>
   <div class="sub-header">

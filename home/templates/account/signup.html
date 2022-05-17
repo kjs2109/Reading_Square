@@ -14,12 +14,12 @@
               <div class='error-message'>{{error}}</div>
             {% endfor %}
           </li>
-          <li>
+          {% comment %} <li>
             {{form.nickname|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:닉네임 (독서광장에서 사용되는 이름입니다)"}}
             {% for error in form.nickname.errors %}
               <div class='error-message'>{{error}}</div>
             {% endfor %}
-          </li>
+          </li> {% endcomment %}
           <li>
             {{form.password1|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:비밀번호"}}
             {% for error in form.password1.errors %}

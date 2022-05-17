@@ -1,0 +1,57 @@
+{% extends 'home/account_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+  <title>프로필 설정</title>  
+{% endblock title %}
+
+{% block style_link %}
+  <link rel="stylesheet" href="{% static 'home/css/profile_set.css' %}">
+{% endblock style_link %}
+
+{% block form_section %}
+  <section class="account_form">
+    <div class="box">
+      <form method='post' enctype='multipart/form-data' autocomplate='off'>
+        {% csrf_token %}
+        <ul>
+            <li>
+                <img src='{{user.profile_photo.url}}'>
+                <div>
+                  <h4>프로필 이미지</h4>
+                  {{form.profile_photo}}
+                </div>
+            </li>
+            <li>
+                {{form.nickname|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:닉네임(필수)"}}
+                {% for error in form.email.errors %}
+                  <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </li>
+            <li>
+              {{form.bio|add_class:"cp-input text-1"|add_error_class:"error"|attr:"placeholder:자신을 소개해 주세요"}}
+              {% for error in form.email.errors %}
+                <div class='error-message'>{{error}}</div>
+              {% endfor %}
+            </li>
+            <li>
+              {{form.fav_verse|add_class:"cp-input text-2"|add_error_class:"error"|attr:"placeholder:내가 가장 좋아하는 책 구절이 있다면?"}}
+              {% for error in form.email.errors %}
+                <div class='error-message'>{{error}}</div>
+              {% endfor %}
+            </li>
+            <li>
+              <h4>배너 이미지</h4>
+              {{form.benner_image}}
+            </li>
+            <li>
+                <input class="login-btn" type="submit" value="완료">
+            </li>
+        </ul>
+      </form>
+    </div>
+  </section>
+
+{% endblock form_section %}
+

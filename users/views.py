@@ -1,9 +1,12 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse 
 from django.core.paginator import Paginator
+from django.views.generic import UpdateView 
 from posts.models import Post 
 from users.models import User
 from my_rooms.models import Book
+from users.forms import ProfileForm 
 
 
 # Create your views here.
@@ -29,3 +32,25 @@ def post_list(request, user_id):
 
     else:
         return render(request, 'users/login_required.html')
+
+class ProfileSetView(UpdateView):
+    model = User 
+    form_class = ProfileForm 
+    template_name = 'users/profile_set_form.html' 
+    
+    def get_object(self, queryset=None):
+        return self.request.user 
+
+    def get_success_url(self):
+        return reverse('home:home')
+
+class ProfileUpdateView(UpdateView):
+    model = User 
+    form_class = ProfileForm 
+    template_name = 'users/profile_update_form.html' 
+    
+    def get_object(self, queryset=None):
+        return self.request.user 
+
+    def get_success_url(self):
+        return reverse('users:profile', kwargs=({'user_id': self.request.user.id}))
