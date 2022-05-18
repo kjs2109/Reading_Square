@@ -14,7 +14,7 @@
     <main>
         <div class="post-container">
             <div class="add_book">
-                <a href='#'>책 추가</a>
+                <a href='{% url 'my_rooms:add_book' user.id %}'>책 추가</a>
             </div>
 
             {% comment %} --------------------- before_read_books ------------------------ {% endcomment %}
@@ -29,7 +29,7 @@
                     <div class="post-box">
                         <img src="{{book.book_image.url}}">
                         <div class="post-info">
-                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <i class="fa fa-pencil"></i>
@@ -67,7 +67,7 @@
                     <div class="post-box">
                         <img src="{{book.book_image.url}}">
                         <div class="post-info">
-                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <i class="fa fa-pencil"></i>
@@ -106,7 +106,7 @@
                     <div class="post-box">
                         <img src="{{book.book_image.url}}">
                         <div class="post-info">
-                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <i class="fa fa-pencil"></i>

@@ -15,7 +15,7 @@ class Book(TimeStampedModel):
     author = models.CharField(max_length=30)
     memo = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
-    book_image = models.ImageField(upload_to='book_pics/', default='default_book_cover.png')
+    book_image = models.ImageField(upload_to='book_pics/', default='default_book_cover_1.png')
 
     used_club = models.BooleanField(default=False)
     used_post = models.BooleanField(default=False)

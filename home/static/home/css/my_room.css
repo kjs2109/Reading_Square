@@ -12,6 +12,7 @@
 
 .post-container .post .post-info {transition: 0.7s ease-in-out; width: 261px; height: 80px; overflow: hidden; opacity: 0.95;}
 .post-container .post .post-info:hover {height: 400px; overflow: auto;}
+.post-container .post .post-info .book-title {display: inline-block;}
 .post-container .post .book-author {margin-top: 20px; margin-bottom: 10px; color: var(--dark-gray)}
 .post-container .post .settings {position: absolute; top: 15px; right: 15px;}
 .post-container .post .settings i {color: var(--dark-gray); margin-left: 6px;}
