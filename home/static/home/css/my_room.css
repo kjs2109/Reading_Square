@@ -17,9 +17,10 @@
 .post-container .post .settings i {color: var(--dark-gray); margin-left: 6px;}
 .post-container .post .date {position: absolute; top: 50px; right: 18px;}
 .post-container .post .book-memo {margin-top: 15px;}
-.post-container .post .select-state {position: absolute; top: 10px; right: 10px; border: 1px solid var(--brown); color: var(--brown);}
-
-
+.post-container .post .select-state-box {display: flex; align-items: center; position: absolute; top: 10px; right: 10px;}
+.post-container .post .select-state-box .select-state {border: 1px solid var(--black); color: var(--black); font-weight: bold; background-color: rgba(255, 255, 255, 0);}
+.post-container .post .select-state-box button {border: none; background-color: rgba(255, 255, 255, 0); padding: 0;}
+.post-container .post .select-state-box i {font-size: 18px; color: var(--black); padding: 4px 0 3px 3px;}
 
 .empty-message {display: flex; justify-content: center; align-items: center;  height: 200px;}
 .empty-message div {color: var(--dark-gray); font-weight: bold;}

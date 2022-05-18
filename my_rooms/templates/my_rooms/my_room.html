@@ -1,0 +1,138 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/my_room.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main>
+        <div class="post-container">
+            <div class="add_book">
+                <a href='#'>책 추가</a>
+            </div>
+
+            {% comment %} --------------------- before_read_books ------------------------ {% endcomment %}
+
+            <div style="margin: 0 27px;">
+                <div class="post-header">
+                    <h2>읽고 싶은 책</h2>
+                </div>
+            </div>
+            {% for book in before_read_books %}
+                <div class="post">
+                    <div class="post-box">
+                        <img src="{{book.book_image.url}}">
+                        <div class="post-info">
+                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-author">{{book.author}}</div>
+                            <div class="settings">
+                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                            <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
+                            <div class="divider"></div>
+                            <div class="book-memo">{{book.memo|linebreaksbr}}</div>
+                        </div>  
+                    </div>
+                    <form action='{% url 'my_rooms:edit_book_status' user.id book.id %}' method='post'>
+                        {% csrf_token %}
+                        <div class='select-state-box'>
+                            {{form.status|add_class:'select-state'}}
+                            <button type='submit'><i class="fa fa-check-circle-o"></i></button>
+                        </div>
+                    </form>
+                </div>
+            {% empty %}
+                <div class='empty-message'>
+                    <div>추가된 책이 없습니다</div>
+                </div>
+            {% endfor %}
+            <div class="clear-fix"></div>
+            
+            {% comment %} ---------------------- reading_books ------------------------- {% endcomment %}
+            <div style="margin: 0 27px;">
+                <div class="post-header">
+                    <h2>읽고 있는 책</h2>
+                </div>
+            </div>
+
+            {% for book in reading_books %}
+                <div class="post">
+                    <div class="post-box">
+                        <img src="{{book.book_image.url}}">
+                        <div class="post-info">
+                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-author">{{book.author}}</div>
+                            <div class="settings">
+                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                            <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
+                            <div class="divider"></div>
+                            <div class="book-memo">{{book.memo|linebreaksbr}}</div>
+                        </div>  
+                    </div>
+                    <form action='{% url 'my_rooms:edit_book_status' user.id book.id %}' method='post'>
+                        {% csrf_token %}
+                        <div class='select-state-box'>
+                            {{form.status|add_class:'select-state'}}
+                            <button type='submit'><i class="fa fa-check-circle-o"></i></button>
+                        </div>
+                    </form>
+                </div>
+            {% empty %}
+                <div class='empty-message'>
+                    <div>추가된 책이 없습니다</div>
+                </div>
+            {% endfor %}
+            <div class="clear-fix"></div>
+
+            {% comment %} -------------------- after_read_books ------------- {% endcomment %}
+
+            <div style="margin: 0 27px;">
+                <div class="post-header">
+                    <h2>다 읽은 책</h2>
+                </div>
+            </div>
+
+            {% for book in after_read_books %}
+                <div class="post">
+                    <div class="post-box">
+                        <img src="{{book.book_image.url}}">
+                        <div class="post-info">
+                            <span class="book-title">{{book.title}}</span>
+                            <div class="book-author">{{book.author}}</div>
+                            <div class="settings">
+                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                            <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
+                            <div class="divider"></div>
+                            <div class="book-memo">{{book.memo}}</div>
+                        </div>  
+                    </div>
+                    <form action='{% url 'my_rooms:edit_book_status' user.id book.id %}' method='post'>
+                        {% csrf_token %}
+                        <div class='select-state-box'>
+                            {{form.status|add_class:'select-state'}}
+                            <button type='submit'><i class="fa fa-check-circle-o"></i></button>
+                        </div>
+                    </form>
+                </div>
+            {% empty %}
+                <div class='empty-message'>
+                    <div>추가된 책이 없습니다</div>
+                </div>
+            {% endfor %}
+            <div class="clear-fix"></div>
+        </div>
+    </main>
+{% endblock content %}
+
+

@@ -19,7 +19,7 @@
                 <img src="{{profile_user.profile_photo.url}}">
                 <div class="book-count">올해 총 <strong>{{count_readed_book}}권</strong>의<br>책을 읽었습니다.</div>
                 {% if profile_user == user %}
-                    <a href="#">내 책방</a>
+                    <a href="{% url 'my_rooms:books' user.id %}">내 책방</a>
                 {% endif %}
             </div>
             <div class="user-info">
