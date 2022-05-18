@@ -18,8 +18,6 @@
         {% csrf_token %}
         <ul>
             <li>
-                {% comment %} <-- <label for="prfile-image">변경:</label> --> {% endcomment %}
-                {% comment %} <input type="file" class="profile-input" id="profile-image"> {% endcomment %}
                 <img src='{{user.profile_photo.url}}'>
                 <div>
                   <h4>프로필 이미지</h4>

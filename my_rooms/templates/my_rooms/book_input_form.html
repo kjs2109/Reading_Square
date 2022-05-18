@@ -15,7 +15,7 @@
         <div class="post-header">
             <h2>책 추가</h2>
         </div>
-        <form class="post-form" method="post" autocomplete="off">
+        <form class="post-form" method="post" autocomplete="off"  enctype='multipart/form-data'>
             {% csrf_token %}
             <div class="book-info">
                 <div class="book-name">
@@ -43,7 +43,6 @@
                 <div class="file-content">
                     <h4>책 이미지</h4>
                     {{form.book_image}}
-                    {% comment %} <img src='{{}}' alt='책 이미지'> {% endcomment %}
                 </div>
             </div>
             <div class="buttons">
