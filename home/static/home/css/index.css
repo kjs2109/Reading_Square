@@ -3,7 +3,6 @@
 .main-banner {
     width: 100%;
     height: 595px;
-    background-image: url('../images/hero-image.png');
     background-size: cover;
     background-position: 25% 20%;
     margin-top: 90px;
