@@ -73,3 +73,18 @@ def edit_book(request, user_id, book_id):
             return render(request, 'my_rooms/book_edit_form.html', {'form': form})
     else:
         return render(request, 'users/login_required.html')
+
+def delete_book(request, user_id, book_id):
+    if request.user.is_authenticated:
+        book = get_object_or_404(Book, pk=book_id)
+        if book.user != request.user:
+            return render(request, 'users/login_required.html')
+        
+        if request.method == 'POST':
+            book.delete() 
+            
+        return redirect('my_rooms:books', user_id=user_id)
+
+        
+    else:
+        return render(request, 'users/login_required.html')

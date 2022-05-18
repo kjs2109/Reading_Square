@@ -33,7 +33,10 @@
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
-                                <a href='#'><i class="fa fa-trash-o"></i></a>
+                                <form action='{% url 'my_rooms:delete_book' user.id book.id %}' method='post'>
+                                    {% csrf_token %}
+                                    <button type='submit'><i class="fa fa-trash-o"></i></button>
+                                </form>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>
@@ -71,7 +74,10 @@
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
-                                <a href='#'><i class="fa fa-trash-o"></i></a>
+                                <form action='{% url 'my_rooms:delete_book' user.id book.id %}' method='post'>
+                                    {% csrf_token %}
+                                    <button type='submit'><i class="fa fa-trash-o"></i></button>
+                                </form>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>
@@ -110,7 +116,10 @@
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
                                 <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
-                                <a href='#'><i class="fa fa-trash-o"></i></a>
+                                <form action='{% url 'my_rooms:delete_book' user.id book.id %}' method='post'>
+                                    {% csrf_token %}
+                                    <button type='submit'><i class="fa fa-trash-o"></i></button>
+                                </form>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>

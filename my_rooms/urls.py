@@ -12,4 +12,5 @@ urlpatterns = [
     # my_room/1/edit_book/1/
     path('<int:user_id>/memo/<int:book_id>/', views.edit_book, name='edit_book'),
     # my_room/1/delete_book/1/
+    path('<int:user_id>/delete_book/<int:book_id>/', views.delete_book, name='delete_book'),
 ]
