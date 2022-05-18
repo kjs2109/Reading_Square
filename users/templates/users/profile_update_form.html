@@ -46,8 +46,8 @@
               {{form.benner_image}}
             </li>
             <li>
-                <a href={% url 'users:profile' user.id %}>취소</a>
-                <input class="login-btn" type="submit" value="완료">
+              <input class="login-btn" type="submit" value="완료">
+              <a href={% url 'users:profile' user.id %} id='profile-update-cancel'><div>취소</div></a>
             </li>
         </ul>
       </form>

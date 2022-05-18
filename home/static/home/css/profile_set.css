@@ -42,4 +42,10 @@ section {margin-bottom: 150px;}
 .account_form .box li:nth-child(5) {text-align: start; line-height: 1.7;}
 .account_form .box li:nth-child(5) h4 {font-weight: bold; color: var(--brown)}
 
+.account_form .box li:last-child {display: flex;}
+#profile-update-cancel {    width: 300px; border: solid 2px var(--error); margin-top: 10px; 
+    border-radius: 28px; font-size: 22px; font-weight: 500; color: var(--error); margin-left: 20px;}
+
+#profile-update-cancel div {position: relative; top: 15px;}
+
 
