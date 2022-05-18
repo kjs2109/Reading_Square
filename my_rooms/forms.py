@@ -15,3 +15,11 @@ class BookForm(forms.ModelForm):
         widgets = {
             'memo': forms.Textarea,
         }
+
+class BookEditForm(forms.ModelForm):
+    class Meta:
+        model = Book 
+        fields = ['title', 'author', 'memo']
+        widgets = {
+            'memo': forms.Textarea,
+        }

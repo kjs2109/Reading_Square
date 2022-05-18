@@ -1,0 +1,49 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>책 메모 | 독서광장</title>
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/book_input_form.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main class="post-form">
+        <div class="post-header">
+            <h2>메모</h2>
+        </div>
+        <form class="post-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="book-info">
+                <div class="book-name">
+                    {{form.title|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:책 제목"}}
+                    {% for error in form.title.errors %}
+                    <div class='error-message'>{{error}}</div>
+                    {% endfor %}
+                </div>
+                <div></div>
+                <div class="book-author">
+                    {{form.author|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:저자"}}
+                    {% for error in form.author.errors %}
+                    <div class='error-message'>{{error}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="content">
+                {{form.memo|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:메모"}}
+                {% for error in form.memo.errors %}
+                <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+
+            <div class="buttons">
+                <a class="cp-button" href="{% url 'my_rooms:books' user.id %}">돌아가기</a>
+                <button class="cp-button" type="submit">작성완료</button>
+            </div>
+        </form>
+    </main>
+{% endblock content %}

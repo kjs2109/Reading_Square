@@ -32,8 +32,8 @@
                             <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
-                                <i class="fa fa-pencil"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
+                                <a href='#'><i class="fa fa-trash-o"></i></a>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>
@@ -70,8 +70,8 @@
                             <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
-                                <i class="fa fa-pencil"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
+                                <a href='#'><i class="fa fa-trash-o"></i></a>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>
@@ -109,8 +109,8 @@
                             <div class="book-title">{{book.title}}</div>
                             <div class="book-author">{{book.author}}</div>
                             <div class="settings">
-                                <i class="fa fa-pencil"></i>
-                                <i class="fa fa-trash-o"></i>
+                                <a href='{% url 'my_rooms:edit_book' user.id book.id %}'><i class="fa fa-pencil"></i></a>
+                                <a href='#'><i class="fa fa-trash-o"></i></a>
                             </div>
                             <p class="date">{{book.create_at|date:'Y.m.d'}}</p>
                             <div class="divider"></div>

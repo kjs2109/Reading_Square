@@ -10,6 +10,6 @@ urlpatterns = [
     # my_room/1/add_book/ 
     path('<int:user_id>/add_book/', views.add_book, name='add_book'),
     # my_room/1/edit_book/1/
-
+    path('<int:user_id>/memo/<int:book_id>/', views.edit_book, name='edit_book'),
     # my_room/1/delete_book/1/
 ]

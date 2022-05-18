@@ -14,7 +14,7 @@
 .post-container .post .post-info:hover {height: 400px; overflow: auto;}
 .post-container .post .post-info .book-title {display: inline-block;}
 .post-container .post .book-author {margin-top: 20px; margin-bottom: 10px; color: var(--dark-gray)}
-.post-container .post .settings {position: absolute; top: 15px; right: 15px;}
+.post-container .post .settings {display: flex; position: absolute; top: 15px; right: 15px;}
 .post-container .post .settings i {color: var(--dark-gray); margin-left: 6px;}
 .post-container .post .date {position: absolute; top: 50px; right: 18px;}
 .post-container .post .book-memo {margin-top: 15px;}

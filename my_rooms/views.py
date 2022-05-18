@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from my_rooms.models import Book
 from users.models import User
-from my_rooms.forms import BookStatusForm, BookForm 
+from my_rooms.forms import BookStatusForm, BookForm, BookEditForm 
 
 # Create your views here.
 def books(request, user_id):
@@ -52,5 +52,24 @@ def add_book(request, user_id):
 
         return render(request, 'my_rooms/book_input_form.html', {'form': form})
 
+    else:
+        return render(request, 'users/login_required.html')
+
+def edit_book(request, user_id, book_id):
+    if request.user.is_authenticated:
+        book = get_object_or_404(Book, pk=book_id)
+        if request.method == 'GET':
+            form = BookEditForm(instance=book)
+            return render(request, 'my_rooms/book_edit_form.html', {'form': form})
+
+        elif request.method == 'POST':
+            form = BookEditForm(request.POST)
+            if form.is_valid():
+                book.title = form.cleaned_data['title']
+                book.author = form.cleaned_data['author']
+                book.memo = form.cleaned_data['memo']
+                book.save() 
+                return redirect('my_rooms:books', user_id=user_id)
+            return render(request, 'my_rooms/book_edit_form.html', {'form': form})
     else:
         return render(request, 'users/login_required.html')
