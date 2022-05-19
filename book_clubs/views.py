@@ -27,9 +27,10 @@ def club_detail(request, club_id):
 
         elif request.method == 'POST':  # book_club에 참여하는 로직 
             # ManyToMany 관계에서 추가는 add() 삭제는 remove() 사용. db에 저장까지 된다.
+            # book_club의 members 포함되어 있는 사람이 POST 요청을 보낼경우 모임을 탈퇴한다.
             if user in club.members.all():
                 club.members.remove(request.user)
-                return redirect('clubs:club_list')
+                return redirect('users:profile', user.id)
             
             else:
                 club.members.add(request.user) 

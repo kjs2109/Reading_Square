@@ -7,3 +7,7 @@ body {background-color: var(--bage)}
 
 .post-form .non-bottom {border-bottom: none; display: flex; flex-direction: row; align-items: center;}
 
+.post-form .publick-setting {display: flex;}
+.post-form .publick-setting h4 {font-weight: bold; color: var(--black);}
+.post-form .publick-setting .publick-check-btn {margin-left: 15px;}
+

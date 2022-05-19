@@ -11,7 +11,7 @@ main .post .post-box {position: relative; width: 285px;}
 main .post a {display: flex;}
 main .post img {width: 285px; height: 436px;}
 main .post .post-info {position: absolute; bottom: 0; width: 100%; height: 150px; border-radius: 5px 5px 0 0; background-color: var(--bage); padding: 15px 15px; box-sizing: border-box;}
-main .post .post-info .book-title {position: relative; top: 7px; padding: 4px 10px; background-color: #fff; border: 1px solid var(--brown); color: var(--brown);}
+main .post .post-info .book-title {display: inline-block; position: relative; top: 7px; padding: 4px 10px; background-color: #fff; border: 1px solid var(--brown); color: var(--brown);}
 main .post .post-info .post-title {font-size: 18px; margin-top: 25px; margin-bottom: 3px; line-height: 1.25;}
 main .post .post-info .date {color: var(--dark-gray); font-size: 14px;}
 main .post .post-info .rating {position: absolute; bottom: 20px; color: #FFD600; font-size: 20px;}

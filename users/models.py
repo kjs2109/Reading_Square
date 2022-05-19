@@ -18,4 +18,4 @@ class User(AbstractUser):
     benner_image = models.ImageField(upload_to='benner_imgs/', default='bg1.jpg')
 
     def __str__(self):
-        return self.username
+        return self.nickname

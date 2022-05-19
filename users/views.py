@@ -13,9 +13,14 @@ from users.forms import ProfileForm
 def profile(request, user_id):
     if request.user.is_authenticated:
         profile_user = get_object_or_404(User, pk=user_id)
-        user_posts = Post.objects.filter(author__id=user_id).order_by('-create_at')[:3]
+        user_posts = Post.objects.filter(Q(author__id=user_id) & Q(publick=True)).order_by('-create_at')[:3]
         count_readed_book = Book.objects.filter(Q(user=profile_user) & Q(status=3)).count()
-        return render(request, 'users/profile.html', {'profile_user': profile_user, 'user_posts': user_posts, 'count_readed_book': count_readed_book})
+        private_posts = Post.objects.filter(Q(author__id=user_id) & Q(publick=False))
+        return render(
+            request, 
+            'users/profile.html', 
+            {'profile_user': profile_user, 'user_posts': user_posts, 'count_readed_book': count_readed_book, 'private_posts': private_posts}
+        )
     else:
         return render(request, 'users/login_required.html')
 

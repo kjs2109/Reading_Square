@@ -24,7 +24,6 @@
                         <span>{{club.book.author}}</span>
                         <span class="date">{{club.create_at|date:'Y.m.d'}}</span>
                     </div>
-                    <div class="divider"></div>
                     <a class="create-post" href="{% url 'clubs:club_post_create' club.id %}">글 쓰기</a>
                 </div>
                 <br>

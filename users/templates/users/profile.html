@@ -76,6 +76,42 @@
             {% endfor %}
  
         <div class="clear-fix"></div>
+        
+        {% if profile_user == user %}
+            <div class="post-container">
+                <div style="margin: 0 63px;">
+                    <div class="post-header">
+                        <h2>비공개 글</h2> 
+                    </div>
+                </div>
+                {% for post in private_posts %}
+                    <div class="post">
+                        <div class="post-box">
+                            <a href="{% url 'posts:post_detail' post.id %}">
+                                <img src="{{post.book.book_image.url}}">
+                                <div class="post-info">
+                                    <span class="book-title">{{post.book.title}}</span>
+                                    <h2 class="post-title">{{post.title}}</h2>
+                                    <p class="date">{{post.create_at|date:'Y.m.d'}}</p>
+                                    <div class="rating">
+                                        {% for i in ''|ljust:post.book_rating %}★{% endfor %}
+                                    </div>
+                                    <div class="post-author">
+                                        <div class='cp-avatar' style="background-image: url('{{post.author.profile_photo}}');"></div>
+                                        <span>by <storn>{{post.author.nickname}}</storn></span>
+                                    </div>
+                                </div>  
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="empty-message">
+                        <div>아직 작성된 글이 없습니다</div>
+                    </div>
+                {% endfor %}
+    
+            <div class="clear-fix"></div>
+        {% endif %}
 
         <div class="post-container">
             <div style="margin: 0 63px;">
@@ -124,6 +160,12 @@
                                 <span class="book-title">{{member_club.book.title}}</span>
                                 <h2 class="post-title">{{member_club.name}}</h2>
                                 <p class="date">{{member_club.create_at|date:'Y.m.d'}}</p>
+                                {% if profile_user == user %}
+                                    <form class='out-club' action='{% url 'clubs:club_detail' member_club.id %}' method='post'>
+                                        {% csrf_token %}
+                                        <button type='submit'><i class="fa fa-trash-o"></i></button>
+                                    </form>
+                                {% endif %}
                                 <div class="post-author">
                                     <span>방장: <storn>{{member_club.host.nickname}}</storn></span>
                                 </div>
@@ -138,6 +180,7 @@
             {% endfor %}
 
         <div class="clear-fix"></div>
+        
     </main>
 {% endblock content %}
 

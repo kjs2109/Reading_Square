@@ -10,7 +10,7 @@
     <div class="post-container">
         <div style="margin: 0 63px;">
             <div class="post-header">
-                <h2>{{profile_user.nickname}}님의 전체 글 목록</h2>
+                <h2>{{profile_user.nickname}}님의 전체 글 목록({{profile_user.posts.count}})</h2>
                 {% if profile_user == request.user %}
                     <a href="{% url 'posts:post_create' %}">글 작성</a>
                 {% endif %}
@@ -20,10 +20,19 @@
         {% for post in page.object_list %}
             <div class="post">
                 <div class="post-box">
-                    <a href="{% url 'posts:post_detail' post.id %}">
+                    <a href="
+                    {% if post.publick == False %}
+                        #
+                    {% else %}
+                        {% url 'posts:post_detail' post.id %}
+                    {% endif %}
+                    ">
                         <img src="{{post.book.book_image.url}}">
                         <div class="post-info">
                             <span class="book-title">{{post.book.title}}</span>
+                            {% if post.publick == False %}
+                                <span class='privite'>비공개</span>
+                            {% endif %}
                             <h2 class="post-title">{{post.title}}</h2>
                             <p class="date">{{post.update_at|date:'Y.m.d'}}</p>
                             <div class="rating">

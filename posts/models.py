@@ -17,6 +17,7 @@ class Post(TimeStampedModel):
     title = models.CharField(max_length=50)
     book_rating = models.IntegerField(choices=RATING_CHOICES, default=None)
     content = models.TextField()
+    publick = models.BooleanField(default=True)
     
     book = models.ForeignKey(Book, related_name='posts', on_delete=models.CASCADE)  # Null로 바뀐 다면 원래 Book을 참조하던 값들은 어떻게 되는 것인가..
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
