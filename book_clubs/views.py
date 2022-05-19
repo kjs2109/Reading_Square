@@ -80,7 +80,7 @@ def club_delete(request, club_id):
             club.book.used_club = False
             club.book.save() 
             club.delete()
-            return redirect('clubs:clubs_detail', club_id=club.id)
+            return redirect('clubs:club_list')
     else:
         return redirect('account_login')
 

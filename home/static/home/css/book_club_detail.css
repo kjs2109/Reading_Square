@@ -2,6 +2,10 @@
 
 body {background-color: var(--bage)}
 
+main .club_info .post-link {margin-bottom: 20px; margin-left: 10px; margin-top: 16px;}
+main .club_info .post-link a {color: var(--dark-gray);}
+main .club_info .post-link a i {margin-right: 8px; font-size: 15px;}
+
 main .club-name {margin: 200px auto 0 auto; width: 974px; font-size: 30px; font-weight: bold; color: var(--black);}
 main .club_info {display: flex; width: 974px; margin: 40px auto 0 auto;}
 main .club_info .club-book-img {width: 300px;}
