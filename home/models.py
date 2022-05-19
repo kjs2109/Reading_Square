@@ -7,3 +7,10 @@ class TimeStampedModel(models.Model):
 
     class Meta:
         abstract = True 
+
+class BookVerse(TimeStampedModel):
+    verse = models.TextField()
+    verse_from = models.CharField(max_length=30, blank=True)
+
+    def __str__(self):
+        return self.verse[:20]

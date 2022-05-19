@@ -3,5 +3,7 @@ from . import views
 
 app_name = 'home'
 urlpatterns = [
+    # ''
     path('', views.HomeClubListView.as_view(), name='home'),
+    path('intro/', views.intro, name='intro'),
 ]

@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 | 독서광장</title>
+    <link rel="stylesheet" href="{% static 'home/css/intro.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="sub-header">
+            <div>
+                <a href="{% url 'home:home' %}"><img src="{% static 'home/images/logo-no-title.png' %}" alt="로고"></a>
+                <h1>독서광장</h1>
+            </div>
+            <ul>
+                <li><a href="{% url 'clubs:club_list' %}">독서모임</a></li>
+                <li><a href="{% url 'posts:posts' %}">게시글</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' user.id %}">프로필</a></li>
+                    <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}">로그인</a></li>
+                    <li><a href="{% url 'account_signup' %}">회원가입</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <main>
+        <div class="index_box">
+            <ul>
+                <li><a href='#what'>독서 광장이란?</a></li>
+                <li>
+                    <a href='#keyword'>독서 광장의 세가지 키워드</a>
+                    <ul>
+                        <li>READING</li>
+                        <li>OPEN</li>
+                        <li>DIGITAL</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href='#how'>독서 광장 활용법</a>
+                    <ul>
+                        <li>나의 책방</li>
+                        <li>독서모임</li>
+                        <li>게시판</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <section class="first" id="what">
+            <h2><strong>독서 광장</strong><br>이란?</h2>
+            <br>
+            <p>
+                '광장'은 도시의 중심부에 세워져 공동체 모임에 쓰이는 공간을 의미합니다.<br>
+                광장은 수많은 사람이 모이는 만남의 공간이자 많은 생각이 오고 가는 소통의 공간입니다. <br>
+                ‘독서광장’은 이러한 물리적 광장을 넘어, 온라인 세상에 세워진 ‘디지털 광장’입니다.<br>
+                즉, 독서광장은 독서를 하며 느낀 감정과 얻게된 생각을 온라인 세상에서 많은 사람들과 나누고 소통할 수<br>
+                있는 웹 사이트입니다.<br>
+            </p>
+            <br>
+            <img src="{% static 'home/images/square.jpg' %}" alt="광장 이미지">
+            <p id="verse-1">"인간의 목표는 풍부하게 소유하는 것이 아니라, 풍성하게 존재하는 것이다."</p>
+            <div id="verse-2">
+                독서광장을 이용하면 단순히 소유만 하는 독서 생활이 아닌, 가치를 생산하는 독서 생활을 할 수 있어요.<br>
+                독서 광장에서 풍성하게 존재하는 사람이 되어보세요.
+            </div>
+        </section>
+        <section class="second" id="keyword">
+            <h3>독서광장의 <strong>세가지 키워드</strong></h3>
+            <div class='col_1'>
+                <div>
+                    <img src="{% static 'home/images/reading.jpg' %}" alt="독서">
+                </div>
+                <div class="description">
+                    <h3>READING</h3>
+                    <p>
+                        독서광장은 이름 그대로 ‘독서’가 중심이 되는 공간입니다.<br>
+                        그동안 책을 읽으며 얻었던 지식과 느꼈던 감동,<br>
+                        다른 사람들과 나누고 싶었던 이야기를 독서광장에서 마음껏 공유해 주세요.<br>
+                        진짜 지식과 가치는 공유와 나눔에 있습니다.<br>
+                        독서광장이 서로가 서로에게 배움과 영감을 주며,<br>
+                        모두가 함께 성장하는데 도움이 될 수 있는 공간이 되었으면 좋겠습니다.<br>
+                    </p>
+                </div>
+            </div>
+            <div class='col_2'>
+                <div>
+                    <img src="{% static 'home/images/public_library.jpg' %}" alt="열린">
+                </div>
+                <div class="description">
+                    <h3>OPEN</h3>
+                    <p>
+                        독서광장은 누구에게나 열린 공간입니다.<br> 
+                        누구에게나 열린 공간인 만큼 다양한 생각과 가치관이 <br>
+                        공유되고 생산될 수 있습니다.<br>
+                        부정확한 정보에 대한 지적과 비판은 가능하지만,<br>
+                        나와 다른 생각에 대한 맹목적인 비난과 비방은 적절하지 않습니다.<br>
+                        열린 공간이 갖는 '다양성'이라는 특성을 이해할 때<br> 
+                        독서 광장을 더욱 의미있고 옳바르게 이용할 수 있습니다.<br>
+                    </p>
+                </div>
+            </div>
+            <div class='col_3'>
+                <div>
+                    <img src="{% static 'home/images/digital.jpg' %}" alt="디지털">
+                </div>
+                <div class="description">
+                    <h3>DIGITAL</h3>
+                    <p>
+                        아날로그 세상은 아날로그 세상만의 장점이 있고<br>
+                        디지털 세상은 디지털 세상만의 장점이 있습니다.<br>
+                        현재 우리는 운이 좋게도, <br>
+                        두 세상에서 만들어지는 가치를 모두 이용할 수 있는 시대에 살고 있습니다.<br>
+                        따라서 현 시대를 사는 우리는 나의 상황에 따라, 혹은 필요에 따라<br>
+                        두 가지 선택지를 적절하게 활용할 수 있는 능력만 있으면 됩니다.<br>
+                        독서 광장이 기존의 물리적인 독서 모임처럼 만남을 통한 깊은 교류를 제공할 수는 없지만<br>
+                        디지털 세상만이 제공할 수 있는 가치는 제공할 수 있습니다.<br>
+                        독서 광장이 그러한 가치를 제공하기 위해 노력할 것이고<br>
+                        우리는 필요에 따라 적절히 두 가지 선택지를 모두 활용할 수 있으면 되겠습니다.<br>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="third" id="how">
+            <h3>독서광장 <strong>활용법</strong></h3>
+            <div class='col_1'>
+                <!-- <div>
+                    <img src="images/my_room.png" alt="독서">
+                </div> -->
+                <div class="description">
+                    <h4>1. 독서광장에 <strong>나만의 책방</strong>을 만들어 보세요</h4>
+                    <p>
+                        <span class="dot">&#183;</span> [나의 책방]은 프로필 페이지를 통해서 이동할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 나의 책방에는 내가 원하는 책을 추가할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 추가된 책은 읽기 전, 읽는 중, 읽은 후로 분류해서 관리할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 추가된 책에는 간단한 메모를 남길 수 있어 책별로 중요한 내용, 키워드 등을 기록할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> <span class='important'>[내 책방]에 추가된 책은 [독서모임]을 만들거나 [글]을 쓸때 사용됩니다.<br></span>
+                    </p>
+                </div>
+            </div>
+            <div class='col_2'>
+                <!-- <div>
+                    <img src="images/my_room.png" alt="독서">
+                </div> -->
+                <div class="description">
+                    <h4>2. <strong>독서모임</strong>을 만들어 여러 사람들과 의견을 공유하세요</h4>
+                    <p>
+                        <span class="dot">&#183;</span> 이야기 나누고 싶은 책을 가지고 독서모임을 만들 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 독서 모임에서는 한가지 주제로 여러 사람이 글을 쓸 수 있고 해당 글에 자신의 의견도 남길 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 모임의 목표, 주제, 규칙, 진행 방식 등은 모임을 만드는 방장이 자유롭게 정할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 독서모임에 사용되는 책은 [내 책방]에 추가된 책을 사용할 수 있으며, 이미 사용된 책은 다시 사용할 수 없습니다.(같은 책으로 여러번 독서모임을 만들고 싶다면 내 책방에 해당 책을 여러번 추가하면 됩니다.) <br>
+                        <span class="dot">&#183;</span> 참여하기를 클릭하면 해당 독서모임에 참여할 수 있고, 탈퇴하고 싶다면 [프로필 페이지]의 [내가 참여하는 모임]에서 <br>탈퇴를 할 수 있습니다.<br>
+                    </p>
+                </div>
+            </div>
+            <div class='col_3'>
+                <!-- <div>
+                    <img src="images/my_room.png" alt="독서">
+                </div> -->
+                <div class="description">
+                    <h4>3. <strong>게시판</strong>에 글을 써 나의 독서생활을 기록으로 남겨보세요</h4>
+                    <p>
+                        <span class="dot">&#183;</span> 게시판에 책의 내용, 느낀점, 자신의 생각 등을 자유롭게 기록하고 남길 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 게시글이 다른사람에게 공개 될지, 비공개 될지를 설정할 수 있습니다.<br>
+                        <span class="dot">&#183;</span> 독서모임에서와 같이 글을 작성할 때 사용되는 책은 [내 책방]에 추가된 책을 사용할 수 있고, 한번 사용된 책은 다시 사용될 수 없습니다.<br>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div>READING SQUARE</div>
+    </footer>
+</body>
+</html>
