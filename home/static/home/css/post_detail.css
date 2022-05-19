@@ -3,6 +3,10 @@
 body {background-color: var(--bage)}
 main {width: 926px; margin: 90px auto 153px auto;}
 
+main .post-link {margin-bottom: 20px; margin-left: 10px;}
+main .post-link a {color: var(--dark-gray);}
+main .post-link a i {margin-right: 8px; font-size: 15px;}
+
 main .post-header {display: flex; justify-content: space-between; margin: 149px auto 50px auto; padding-bottom: 5px; border-bottom: 1px solid var(--gray);}
 main .post-header a {border: none;}
 main .post-header .post-col1 {display: flex; align-items: center;}

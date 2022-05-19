@@ -15,7 +15,7 @@ class CommentForm(forms.ModelForm):
 class ClubForm(forms.ModelForm):
     class Meta: 
         model =  BookClub
-        fields = ['name', 'intro', 'rule', 'book'] 
+        fields = ['name', 'intro', 'rule', 'book', 'link_title', 'link'] 
 
     def __init__(self, user=None, *args, **kwargs):
         super(ClubForm, self).__init__(*args, **kwargs) 

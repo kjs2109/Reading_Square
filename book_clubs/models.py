@@ -8,6 +8,8 @@ class BookClub(TimeStampedModel):
     name = models.CharField(max_length=50)
     intro = models.TextField(blank=True)
     rule = models.TextField(blank=True) 
+    link_title = models.CharField(max_length=30, default='링크 제목')
+    link = models.URLField(blank=True)
 
     host = models.ForeignKey(User, related_name='book_clubs', on_delete=models.CASCADE)
     book = models.ForeignKey(Book, related_name='clubs', on_delete=models.CASCADE)

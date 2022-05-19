@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post 
-        fields = ['title', 'book', 'book_rating', 'content', 'publick'] 
+        fields = ['title', 'book', 'book_rating', 'content', 'link_title', 'link', 'publick'] 
         widgets = {
             'book_rating': forms.RadioSelect,
             'book': forms.Select(attrs={'class': 'select'}),  # choices를 사용하면 기본 폼으로 Select가 적용된다.
