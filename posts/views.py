@@ -1,21 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView  
 from posts.models import Post
 from posts.forms import PostForm, PostUpdateForm
 
 # Create your views here.
-class PostListView(ListView):
-    model = Post 
-    template_name = 'posts/posts_list.html'
+# class PostListView(ListView):
+#     model = Post 
+#     template_name = 'posts/posts_list.html'
     # context_object_name = 'posts'
-    paginate_by = 9 
-    ordering = ['-create_at']
+    # paginate_by = 9 
+    # ordering = ['-create_at']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(publick=True).order_by('-create_at')
-        return context
+    # 비공개 포스트는 제외하고 페이지 네이션 적용
+def post_list(request):
+    publick_posts =  Post.objects.filter(publick=True).order_by('-create_at')
+    paginator = Paginator(publick_posts, 9)
+    curr_page_number = request.GET.get('page')
+    if curr_page_number is None:
+        curr_page_number = 1 
+    page = paginator.page(curr_page_number)
+    return render(request, 'posts/post_list.html', {'page': page})
 
 class PostDetailView(DetailView):
     model = Post 

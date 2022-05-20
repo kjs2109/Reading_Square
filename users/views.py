@@ -27,7 +27,7 @@ def profile(request, user_id):
 def post_list(request, user_id):
     if request.user.is_authenticated:
         profile_user = get_object_or_404(User, pk=user_id)
-        user_post_list = Post.objects.filter(author=profile_user)
+        user_post_list = Post.objects.filter(author=profile_user).order_by('-create_at')
         paginator = Paginator(user_post_list, 9)
         curr_page_number = request.GET.get('page')
         if curr_page_number is None:

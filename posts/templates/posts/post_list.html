@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        {% for post in posts %}
+        {% for post in page.object_list %}
             <div class="post">
                 <div class="post-box">
                     <a href="{% url 'posts:post_detail' post.id %}">
@@ -44,20 +44,18 @@
 
     <div class="page">
         <ul class="pagination">
-            {% if page_obj.has_previous %}
+            {% if page.has_previous %}
                 <li><a href='?page=1'>first</a></li>
-                <li class='prev'><a href='?{{page_obj.previous_page_number}}'>prev</a></li>
+                <li class='prev'><a href='?{{page.previous_page_number}}'>prev</a></li>
             {% endif %}
 
-            {% if page_obj %}
-                <li class="mid">{{page_obj.number}}</li>
-                    <span class="mid"> of </span>
-                <li class="mid">{{page_obj.paginator.num_pages}}</li>
-            {% endif %}
+            <li class="mid">{{page.number}}</li>
+                <span class="mid"> of </span>
+            <li class="mid">{{page.paginator.num_pages}}</li>
 
-            {% if page_obj.has_next %}
-                <li class="next"><a href="?page={{ page_obj.next_page_number }}">next</a></a></li>
-                <li><a href="?page={{ page_obj.paginator.num_pages }}">last</a></a></li>
+            {% if page.has_next %}
+                <li class="next"><a href="?page={{ page.next_page_number }}">next</a></a></li>
+                <li><a href="?page={{ page.paginator.num_pages }}">last</a></a></li>
             {% endif %}
         </ul>
     </div>
