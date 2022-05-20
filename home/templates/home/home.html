@@ -31,7 +31,14 @@
                                     <span class="date">{{club.create_at|date:'Y.m.d'}}</span>
                                 </div>
                                 <div class="divider"></div>
-                                <a>참여하기</a>
+                                {% if user in club.members.all or user == club.host %}
+                                    <a href={% url 'clubs:club_detail' club.id %}>입장하기</a>
+                                {% else %}
+                                    <form action='{% url 'clubs:club_detail' club.id %}' method='post'>
+                                        {% csrf_token %}
+                                        <input type='submit' value='참여하기'>
+                                    </form>
+                                {% endif %}
                             </div>
                             <br>
                             <div class="club-info">

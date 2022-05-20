@@ -18,7 +18,7 @@
                 <img class='club-book-img' src="{{club.book.book_image.url}}" alt="독서모임 이미지">
                 {% if club.link %}
                     <div class='post-link'>
-                        <a href='{{club.link}}'><i class="fa fa-external-link"></i>{{club.link_title}}</a>
+                        <a href='{{club.link}}' target='_blank'><i class="fa fa-external-link"></i>{{club.link_title}}</a>
                     </div>
                 {% endif %}
             </div>
@@ -44,6 +44,26 @@
                         <a href='{% url 'clubs:club_delete' club.id %}'>독서모임 삭제하기</a>
                     {% endif %}
                 </div>
+            </div>
+        </div>
+        <div class='members-box'>
+            <div class='club-host'>
+                <h4>방장</h4>
+                <a href="{% url 'users:profile' club.host.id %}">
+                    <img src="{{club.host.profile_photo.url}}">
+                    <div class="user-name">{{club.host.nickname}}</div>
+                </a>
+            </div>
+            <div class='club-members'>
+                <h4 class='member-title'>함께 하는 멤버</h4>
+                {% for member in club.members.all %}
+                    <div class='member-box'>
+                        <a href="{% url 'users:profile' member.id %}">
+                        <img src="{{member.profile_photo.url}}">
+                        <div class="user-name">{{member.nickname}}</div>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
         </div>
 

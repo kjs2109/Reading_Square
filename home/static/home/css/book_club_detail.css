@@ -21,6 +21,15 @@ main .club_info .col-2 .club-detail-info {margin-top: 8px; padding: 20px; color:
 main .club_info .col-2 .delete-club {text-align: right;}
 main .club_info .col-2 .delete-club a {color: var(--dark-gray); border-bottom: solid 1px var(--dark-gray)}
 
+main .members-box {display: flex; margin-top: 10px;}
+main .members-box h4 {margin-bottom: 5px; color: var(--brown); font-weight: bold;)}
+main .members-box img {width: 55px; height: 55px; border-radius: 50%;}
+main .members-box .user-name {font-weight: 600; margin-bottom: 10px; margin-top: 5px;}
+main .members-box .club-host {width: 100px; text-align: center; border-right: 2px solid var(--gray); padding-right: 20px;}
+main .members-box .club-members {display: flex; margin-left: 30px; width: 100%; overflow: auto;}
+main .members-box .club-members .member-box {margin-top: 22px; text-align: center; width: 100px;} 
+.member-title {position: absolute;}
+
 main .club-post {width: 974px; margin: 60px auto 0 auto; border: solid 1px var(--brown); padding: 24px; box-sizing: border-box;}
 main .club-post .club-post-header {display: flex; justify-content: space-between;}
 main .club-post-header .header-col_1 .post-title {font-size: 24px; margin-bottom: 9px;}
