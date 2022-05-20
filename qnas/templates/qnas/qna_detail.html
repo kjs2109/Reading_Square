@@ -29,6 +29,7 @@
         <div class="answer">
             <p class="answer">
                 {% for answer in qna.answers.all %}
+                    <h4>{{answer.author.nickname}}</h4>
                     <p>
                         {{answer.content}}
                         {% if answer.author == user %}
@@ -53,8 +54,10 @@
         <div class="footer">
             <a class="back-link" href="{% url 'qnas:qna_list' %}">목록으로</a>
             <div class="buttons">
-                <a class="cp-button secondary" href="#">수정</a>
-                <a class="cp-button warn" href="#">삭제</a>
+                {% if qna.user == user %}
+                    <a class="cp-button secondary" href="{% url 'qnas:qna_update' qna.id %}">수정</a>
+                    <a class="cp-button warn" href="#">삭제</a>
+                {% endif %}
             </div>
         </div>
     </main>

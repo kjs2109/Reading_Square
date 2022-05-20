@@ -82,11 +82,10 @@ def post_update(request, post_id):
         post = get_object_or_404(Post, pk=post_id)
 
         if request.user != post.author:
-            return redirect('posts:posts')
+            return redirect('posts:post_detail', post_id=post_id)
 
         if request.method == 'GET':
             form = PostUpdateForm(instance=post)
-            return render(request, 'posts/post_update_form.html', {'form': form, 'post': post})
         
         elif request.method == 'POST':
             form = PostUpdateForm(request.POST) 
@@ -96,7 +95,9 @@ def post_update(request, post_id):
                 post.book_rating = form.cleaned_data['book_rating']
                 post.publick = form.cleaned_data['publick']
                 post.save() 
-                return redirect('posts:post_detail', post_id=post_id)
+                return redirect('posts:post_detail', post_id=post_id)  
+        return render(request, 'posts/post_update_form.html', {'form': form, 'post': post})
+
     else:
         return redirect('login_required')
 

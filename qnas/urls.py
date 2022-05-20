@@ -12,7 +12,7 @@ urlpatterns = [
     # qna/create/
     path('create/', views.qna_create, name='qna_create'),
     # qna/1/update/
-
+    path('<int:qna_id>/update/', views.qna_update, name='qna_update'),
     # qna/1/delte/
 
 ]

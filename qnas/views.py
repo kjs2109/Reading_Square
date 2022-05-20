@@ -54,3 +54,26 @@ def qna_create(request):
     
     else:
         return render(request, 'users/login_required.html')
+
+def qna_update(request, qna_id):
+    if request.user.is_authenticated:
+        qna = get_object_or_404(Qna, pk=qna_id)
+
+        if request.user != qna.user:
+            return redirect('qnas:qna_detail', qna_id=qna_id)
+
+        if request.method == 'GET':
+            form = QnaForm(instance=qna)
+
+        elif request.method == 'POST':
+            form = QnaForm(request.POST)
+            if form.is_valid():
+                qna.title = form.cleaned_data['title']
+                qna.content = form.cleaned_data['content']
+                qna.content_type = form.cleaned_data['content_type']
+                qna.save()
+                return redirect('qnas:qna_detail', qna_id=qna_id)
+        return render(request, 'qnas/qna_form.html', {'form': form})
+
+    else:
+        return render(request, 'users/login_required.html')
