@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'book_clubs',
     'my_rooms',
+    'qnas',
     'widget_tweaks',
     'allauth',
     'allauth.account',

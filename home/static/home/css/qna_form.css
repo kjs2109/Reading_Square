@@ -1,0 +1,5 @@
+@import 'global.css';
+
+/* body {background-color: var(--bage);} */
+.post-form .book-info {border-bottom: none;}
+.post-form .buttons button {background-color: white;}

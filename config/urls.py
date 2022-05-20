@@ -33,6 +33,8 @@ urlpatterns = [
     path('my_room/', include('my_rooms.urls')),
     # users
     path('users/', include('users.urls')),
+    # qnas
+    path('qna/', include('qnas.urls')),
     # allauth
     path(
         'login_required/', 
