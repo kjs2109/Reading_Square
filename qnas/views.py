@@ -1,7 +1,7 @@
-from django.shortcuts import get_object_or_404, render, get_object_or_404 
-from django.views.generic import ListView 
-from qnas.models import Qna 
-from qnas.forms import AnswerForm 
+from django.shortcuts import get_object_or_404, render, get_object_or_404, redirect 
+from django.views.generic import ListView
+from qnas.models import Qna, Answer 
+from qnas.forms import AnswerForm, QnaForm 
 
 # Create your views here.
 class QnaListView(ListView):
@@ -28,3 +28,29 @@ def qna_detail(request, qna_id):
     answer_form = AnswerForm()
  
     return render(request, 'qnas/qna_detail.html', {'qna': qna, 'form': answer_form})
+
+def answer_delete(request, qna_id, answer_id):
+    if request.user.is_authenticated:
+        answer = get_object_or_404(Answer, pk=answer_id)
+        answer.delete() 
+        return redirect('qnas:qna_detail', qna_id=qna_id)
+    else:
+        return render(request, 'users/login_required.html')
+
+def qna_create(request):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            form = QnaForm() 
+
+        elif request.method == 'POST':
+            form = QnaForm(request.POST)
+            if form.is_valid():
+                new_qna = form.save(commit=False)
+                new_qna.user = request.user
+                new_qna.save()
+                return redirect('qnas:qna_detail', qna_id=new_qna.id)
+
+        return render(request, 'qnas/qna_form.html', {'form': form})
+    
+    else:
+        return render(request, 'users/login_required.html')

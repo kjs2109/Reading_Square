@@ -31,6 +31,10 @@
                 {% for answer in qna.answers.all %}
                     <p>
                         {{answer.content}}
+                        {% if answer.author == user %}
+                                {% csrf_token %}
+                                <a href='{% url 'qnas:answer_delete' qna.id answer.id %}'>답변 삭제</a>
+                        {% endif %}
                     </p>
                 {% empty %}
                     <div class='empty-box'>

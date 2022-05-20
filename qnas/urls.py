@@ -7,8 +7,10 @@ urlpatterns = [
     path('', views.QnaListView.as_view(), name='qna_list'),
     # qna/1/detail/
     path('<int:qna_id>/detail/', views.qna_detail, name='qna_detail'),
+    # qna/answer_delete/1/ 
+    path('<int:qna_id>/answer_delete/<int:answer_id>/', views.answer_delete, name='answer_delete'),
     # qna/create/
-
+    path('create/', views.qna_create, name='qna_create'),
     # qna/1/update/
 
     # qna/1/delte/

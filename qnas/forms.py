@@ -5,6 +5,9 @@ class QnaForm(forms.ModelForm):
     class Meta:
         model = Qna 
         fields = ['title', 'content', 'content_type']
+        widgets = {
+            'content': forms.Textarea,
+        }
 
 class AnswerForm(forms.ModelForm):
     class Meta:
