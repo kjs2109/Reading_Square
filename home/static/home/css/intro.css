@@ -63,6 +63,7 @@ section {width: 1116px; margin: 0 auto;}
 
 .third .col_3 {margin-left: 180px; margin-bottom: 60px; margin-bottom: 200px;}
 
+.description .qna-link {border-bottom: solid 1px var(--dark-gray)}
 
 .footer {position: relative; display: flex; height: 162px; background-color: rgb(239, 239, 239); align-items: center;}
 .footer div {color: white; font-size: 20px; font-weight: 600; position: absolute; right: 100px;}

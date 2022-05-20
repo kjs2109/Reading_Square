@@ -77,3 +77,12 @@ def qna_update(request, qna_id):
 
     else:
         return render(request, 'users/login_required.html')
+
+
+def qna_delete(request, qna_id):
+    if request.user.is_authenticated:
+        qna = get_object_or_404(Qna, pk=qna_id)
+        qna.delete()
+        return redirect('qnas:qna_list')
+    else:
+        return render(request, 'users/login_required.html')

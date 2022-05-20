@@ -56,7 +56,7 @@
             <div class="buttons">
                 {% if qna.user == user %}
                     <a class="cp-button secondary" href="{% url 'qnas:qna_update' qna.id %}">수정</a>
-                    <a class="cp-button warn" href="#">삭제</a>
+                    <a class="cp-button warn" href="{% url 'qnas:qna_delete' qna.id %}">삭제</a>
                 {% endif %}
             </div>
         </div>

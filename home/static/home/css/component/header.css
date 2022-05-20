@@ -44,3 +44,5 @@
 .site-footer {height: 162px; background-color: var(--black);}
 .site-footer {display: flex; align-items: center; justify-content: flex-end;}
 .site-footer div {font-weight: bold; font-size: 18px; color: var(--brown); position: relative; right: 162px;}
+.site-footer .qna {    position: relative; right: 8px; top: 24px;}
+.site-footer .qna a {font-size: 16px; font-weight: bold; color: whitesmoke;}
