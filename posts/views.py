@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView  
 from posts.models import Post
-from posts.forms import PostForm
+from posts.forms import PostForm, PostUpdateForm
 
 # Create your views here.
 class PostListView(ListView):
@@ -14,7 +14,7 @@ class PostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(publick=True)
+        context['posts'] = Post.objects.filter(publick=True).order_by('-create_at')
         return context
 
 class PostDetailView(DetailView):
@@ -79,18 +79,16 @@ def post_update(request, post_id):
             return redirect('posts:posts')
 
         if request.method == 'GET':
-            form = PostForm(instance=post, user=request.user)
-            return render(request, 'posts/post_form.html', {'form': form, 'post': post})
+            form = PostUpdateForm(instance=post)
+            return render(request, 'posts/post_update_form.html', {'form': form, 'post': post})
         
         elif request.method == 'POST':
-            form = PostForm(request.user, request.POST) 
+            form = PostUpdateForm(request.POST) 
             if form.is_valid():
                 post.title = form.cleaned_data['title']
                 post.content = form.cleaned_data['content']
                 post.book_rating = form.cleaned_data['book_rating']
-                post.book = post.book
                 post.save() 
-                post.book.save()
                 return redirect('posts:post_detail', post_id=post_id)
     else:
         return redirect('login_required')

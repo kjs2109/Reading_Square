@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {% if post %}
+        <title>{{post.title}} | 독서광장</title>
+    {% else %}
+        <title>글 작성 | 독서광장</title>
+    {% endif %}
+{% endblock title %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/post_form.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+    <main class='post-form'>
+        <div class="post-header">
+            {% if post %}
+                <h2>글 수정</h2>
+            {% else %}
+                <h2>글쓰기</h2>
+            {% endif %}
+        </div>
+        <form class="post-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="title">
+                {{form.title|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:제목'}}
+                {% for error in form.title.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class="book-info non-bottom">
+                <div class="rating">
+                    <div class="cp-stars">
+                        {% for radio in form.book_rating %}
+                            {{radio}}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                {{form.content|add_class:'cp-input'|add_error_class:'error'|attr:'placeholder:내용을 작성해 주세요'}}
+                {% for error in form.content.errors %}
+                    <div class='error-message'>{{error}}</div>
+                {% endfor %}
+            </div>
+            <div class='link'>
+                <h4>관련 링크</h4>
+                <div class='link-section'>
+                    {{form.link_title|add_class:'link-input'|add_error_class:'error'|attr:'placeholder:링크 제목'}}
+                    {% for error in form.content.errors %}
+                        <div class='error-message'>{{error}}</div>
+                    {% endfor %}
+                    {{form.link|add_class:'link-input'|add_error_class:'error'|attr:'placeholder:관련 링크'}}
+                    {% for error in form.content.errors %}
+                        <div class='error-message'>{{error}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class='publick-setting'>
+                <h4>공개 / 비공개</h4>
+                {{form.publick|add_class:'publick-check-btn'}}
+            </div>
+            <div class="buttons">
+                <a class="cp-button" href="{% url 'posts:posts' %}">돌아가기</a>
+                {% if post %}
+                    <input class="cp-button" type="submit" value='수정완료'>
+                {% else %}
+                    <input class="cp-button" type="submit" value='작성완료'>
+                {% endif %}
+            </div>
+        </form>
+    </main>
+{% endblock content %}

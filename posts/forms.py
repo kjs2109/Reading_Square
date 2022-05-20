@@ -18,3 +18,12 @@ class PostForm(forms.ModelForm):
     def __init__(self, user=None, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
         self.fields['book'].queryset = Book.objects.filter(Q(user=user) & Q(used_post = False))
+
+class PostUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Post 
+        fields = ['title', 'book_rating', 'content', 'link_title', 'link', 'publick']
+        widgets = {
+            'book_rating': forms.RadioSelect,
+        }
