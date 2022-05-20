@@ -6,6 +6,8 @@ main .qna-container {width: 800px; margin: 0 auto; min-height: 300px;}
 .section_2 table .bord-header {text-align: center; background-color: var(--gray); font-weight: bold;}
 .section_2 table .bord-header td { padding: 10px;}
 .section_2 table tr td.col-1 {width: 60%;}
+.section_2 table tr td.bord-col-1,
+.section_2 table tr td.bord-col-2 {font-size: 14px;}
 
 .section_2 table .bord-content {border-bottom: solid 0.7px var(--gray);}
 .section_2 table .bord-content td {padding: 10px; color: var(--dark-gray);}

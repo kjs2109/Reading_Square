@@ -27,7 +27,7 @@
                     </tr>
                     {% for qna in qnas %}
                         <tr class="bord-content">
-                            <td class="bord-title"><a href="#">{{qna.title}}</a></td>
+                            <td class="bord-title"><a href="{% url 'qnas:qna_detail' qna.id %}">{{qna.title}}</a></td>
                             <td class="bord-col-1">{{qna.user.nickname}}</td>
                             <td class="bord-col-2">{{qna.create_at}}</td>
                         </tr>

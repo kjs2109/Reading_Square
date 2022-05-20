@@ -1,68 +1,36 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}
     <title>{{qna.title}} | 독서광장</title>
-    <link rel="stylesheet" href="css/qna_detail.css">
-    <script src="js/index.js" defer></script>
-</head>
-<body>
-    <div class="navbar">
-        <a id="logo" href="index.html">
-            <div class="logo-container">
-                <img src="images/logo-brown.png">
-                <div>독서 광장</div>
-            </div>
-        </a>
-        <ul id="menu">
-            <li><a href="#">소개</a></li>
-            <li><a href="#">독서모임</a></li>
-            <li><a href="#">게시글</a>
-            <!-- <li><a href="#">프로필</a></li> -->
-            <li class="divider"><span>|</span></li>
-            <li><a href="account/login.html">로그인</a></li>
-            <li><a href="#">회원가입</a></a></li>
-        </ul>
-        <a href="#" class="navbar-toggle">
-            <i class="fas fa-bars"></i>
-        </a>
-    </div>
+{% endblock %}
+    
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'home/css/qna_detail.css'%}">
+{% endblock style_link %}
+
+{% block content %}
     <main>
         <div class="qna-header">
             <div class="qna-col1">
                 <div>
-                    <h2 class="title">야간비행을 읽고</h2>
-                    <date class="date">2021년 2월 25일</date>
+                    <h2 class="title">{{qna.title}}</h2>
+                    <date class="date">{{qna.create_at}}</date>
                 </div>
             </div>
         </div>
         <div class="content-box">
             <p class="content">
-                이듬해 질 녘 꽃 피는 봄 한여름 밤의 꿈<br>
-                가을 타 겨울 내릴 눈 1년 네 번 또다시 봄<br>
-                정들었던 내 젊은 날 이제는 안녕<br>
-                아름답던 우리의 봄 여름 가을 겨울<br>
-                'Four seasons with no reason'<br>
-                비 갠 뒤에 비애(悲哀) 대신 a happy end<br>
-                비스듬히 씩 비웃듯 칠색 무늬의 무지개<br>
-                철없이 철 지나 철들지 못해(still)<br>
-                철부지에 철 그른지 오래, Marchin' 비발디<br>
+                {{qna.title}}
             </p>
         </div>
 
         <div class="footer">
-            <a class="back-link" href="#">목록으로</a>
+            <a class="back-link" href="{% url 'qnas:qna_list' %}">목록으로</a>
             <div class="buttons">
                 <a class="cp-button secondary" href="#">수정</a>
                 <a class="cp-button warn" href="#">삭제</a>
             </div>
         </div>
     </main>
-    <footer class="site-footer">
-        <div>READING SQUARE</div>
-    </footer>
-    <script src="https://kit.fontawesome.com/03a9c761b6.js" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}

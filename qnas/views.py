@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, get_object_or_404 
 from django.views.generic import ListView 
 from qnas.models import Qna 
 
@@ -9,3 +9,7 @@ class QnaListView(ListView):
     paginate_by = 7 
     context_object_name = 'qnas'
     ordering = ['-create_at']
+
+def qna_detail(request, qna_id):
+    qna = get_object_or_404(Qna, pk=qna_id)
+    return render(request, 'qnas/qna_detail.html', {'qna': qna})
