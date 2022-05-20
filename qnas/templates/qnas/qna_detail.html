@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block title %}
     <title>{{qna.title}} | 독서광장</title>
@@ -21,9 +22,29 @@
         </div>
         <div class="content-box">
             <p class="content">
-                {{qna.title}}
+                {{qna.content|linebreaksbr}}
             </p>
         </div>
+
+        <div class="answer">
+            <p class="answer">
+                {% for answer in qna.answers.all %}
+                    <p>
+                        {{answer.content}}
+                    </p>
+                {% empty %}
+                    <div class='empty-box'>
+                        <p class='empty'>아직 답변이 없어요 :(</p>
+                    </div>
+                {% endfor %}
+            </p>
+        </div>
+
+        <form  class='answer' method='POST'>
+            {% csrf_token %}
+            {{form.content|add_class:'answer-box'|attr:'placeholder:답변'}}
+            <input class='answer-submit-btn' type='submit' value='답변 제출'>
+        </form>
 
         <div class="footer">
             <a class="back-link" href="{% url 'qnas:qna_list' %}">목록으로</a>

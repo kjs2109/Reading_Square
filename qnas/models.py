@@ -20,3 +20,11 @@ class Qna(TimeStampedModel):
 
     def __str__(self):
         return self.title 
+
+class Answer(TimeStampedModel):
+    content = models.TextField() 
+    question = models.ForeignKey(Qna, related_name='answers', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='answers', on_delete=models.CASCADE)
+
+    def __str__(self): 
+        return self.content[:30]
