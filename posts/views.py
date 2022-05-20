@@ -88,6 +88,7 @@ def post_update(request, post_id):
                 post.title = form.cleaned_data['title']
                 post.content = form.cleaned_data['content']
                 post.book_rating = form.cleaned_data['book_rating']
+                post.publick = form.cleaned_data['publick']
                 post.save() 
                 return redirect('posts:post_detail', post_id=post_id)
     else:
@@ -105,6 +106,7 @@ def post_delete(request, post_id):
 
         elif request.method == 'POST':
             post.book.used_post = False 
+            post.book.save()
             post.delete() 
             return redirect('posts:posts')
     
