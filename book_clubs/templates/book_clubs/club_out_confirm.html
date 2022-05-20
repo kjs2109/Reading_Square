@@ -1,0 +1,18 @@
+{% extends 'home/message_base.html' %}
+{% load static %}
+
+{% block message %}
+    <div class="message">
+        <div>
+            <p>정말 <strong>[{{club.name}}]</strong> 모임을 나가시겠습니까?</p>
+        </div>
+        <div class="delete-confirm">
+            <form class='out-club' action='{% url 'clubs:club_detail' club.id %}' method='post'>
+                {% csrf_token %}
+                <button type='submit' class="cp-btn delete-btn">확인</button>
+            </form>
+            <a class="cp-btn" href="{% url 'clubs:club_detail' club.id %}">취소</a>
+        </div>
+    </div>
+</div>
+{% endblock message %}

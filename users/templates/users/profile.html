@@ -161,10 +161,9 @@
                                 <h2 class="post-title">{{member_club.name}}</h2>
                                 <p class="date">{{member_club.create_at|date:'Y.m.d'}}</p>
                                 {% if profile_user == user %}
-                                    <form class='out-club' action='{% url 'clubs:club_detail' member_club.id %}' method='post'>
-                                        {% csrf_token %}
-                                        <button type='submit'><i class="fa fa-trash-o"></i></button>
-                                    </form>
+                                    <div class='out-club'>
+                                        <a href='{% url 'clubs:club_out' member_club.id %}'><i class="fa fa-trash-o"></i></a>
+                                    </div>
                                 {% endif %}
                                 <div class="post-author">
                                     <span>방장: <storn>{{member_club.host.nickname}}</storn></span>

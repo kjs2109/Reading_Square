@@ -166,3 +166,7 @@ def comment_delete(request, club_id, comment_id):
         return redirect('clubs:club_detail', club_id=club_id )
     else:
         return redirect('account_login')
+
+def club_out(reqeust, club_id):
+    club = get_object_or_404(BookClub, pk=club_id)
+    return render(reqeust, 'book_clubs/club_out_confirm.html', {'club': club}) 

@@ -26,8 +26,10 @@
 .book-count {line-height: 1.4; margin-bottom: 10px; text-align: center; color: var(--dark-gray);}
 .book-count strong {color: var(--black); font-weight: bold;}
 
-main .post-box .post-info .out-club {position: absolute; top: 12px; right: 12px; font-size: 18px;}
-main .post-box .post-info .out-club button {border: none; background-color: var(--bage);}
+main .post .post-info .post-title {margin-top: 15px;}
+main .post a {display: inline-block;}
+main .post-box .post-info .out-club {position: absolute; top: 24px; right: 12px; font-size: 18px;}
+main .post-box .post-info .out-club a {border: none; background-color: var(--bage);}
 
 main .space {height: 1px; width: 100px;}
 

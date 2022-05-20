@@ -21,4 +21,6 @@ urlpatterns = [
     path('<int:club_id>/posts/<int:post_id>/create_comment/', views.comment_create, name='comment_create'),
     # book_clubs/1/delete_comment/1/ 
     path('<int:club_id>/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete'),
+    # book_clubs/1/club_out/ 
+    path('<int:club_id>/club_out/', views.club_out, name='club_out'),
 ]
