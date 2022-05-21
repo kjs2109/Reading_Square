@@ -1,8 +1,0 @@
-main .page .pagination {display: flex; justify-content: center; align-items: center; margin-top: 110px;}
-main .page .pagination li {margin: 10px;} 
-main .page .pagination .mid {font-weight: bold; color: var(--dark)}
-main .page .pagination .mid a {color: var(--dark);}
-main .page .pagination .prev a, 
-main .page .pagination .next a {color: var(--brown)}
-main .page .pagination li:first-child a, 
-main .page .pagination li:last-child a {color: var(--dark-gray)} 

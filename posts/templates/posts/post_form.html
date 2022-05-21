@@ -31,11 +31,11 @@
                     <div class='error-message'>{{error}}</div>
                 {% endfor %}
             </div>
-            <div class="book-info non-bottom">
+            <div class="book-info non-bottom left-fix-box">
 
-                {{form.book|add_class:'book-select'}}
+                {{form.book|add_class:'book-select left-fix'}}
 
-                <div class="rating">
+                <div class="rating left-fix">
                     <div class="cp-stars">
                         {% for radio in form.book_rating %}
                             {{radio}}

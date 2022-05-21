@@ -9,7 +9,7 @@
 }
 
 .intro-title {font-family: 'Nanum Brush Script', cursive; opacity: 0.7; color: whitesmoke; font-size: 37px; position: relative;
-    top: 100px;left: 140px; line-height: 1.6; display: inline-block;}
+    top: 100px; left: 140px; line-height: 1.6; display: inline-block;}
 .intro-title .verse_from {font-size: 27px; text-align: center;}
 
 main .contents {width: 1116px; margin :0 auto;}
@@ -30,4 +30,15 @@ main .contents .book-club .col-2 .club-info h4 {font-size: 21px; color: var(--bl
 main .contents .book-club .col-2 .club-info .club-intro {color: var(--brown); margin-bottom: 15px; padding-left: 10px; line-height: 1.6;}
 main .contents .book-club .col-2 .club-info .club-detail-info {color: var(--dark-gray); padding-left: 10px; line-height: 1.6;}
 
+@media (min-width: 1700px) {
+    .main-banner {
+        height: 747px;
+    }
+    .intro-title {top: 126px;}
+}
 
+@media (max-width: 1000px) {
+    .main-banner {
+        height: 500px;
+    }
+}

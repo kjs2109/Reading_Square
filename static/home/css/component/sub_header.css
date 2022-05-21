@@ -1,6 +1,0 @@
-.sub-header {margin-top: 61px; text-align: center;}
-.sub-header #logo-title {font-size: 32px; font-weight: 600; color: var(--brown);}
-.sub-header div {position: relative; right: 26px; justify-content: space-between; width: 180px; height: 128px; margin: 0 auto;}
-.sub-header div h1 {position: absolute; top: 51px; right:-32px;}
-.sub-header div a {display: inline-block;}
-.sub-header img {width: 132px; height: 128px;}

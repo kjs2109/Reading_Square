@@ -131,3 +131,4 @@ dmypy.json
 images/
 migrations/
 media/
+static/

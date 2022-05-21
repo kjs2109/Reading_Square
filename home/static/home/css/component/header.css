@@ -41,8 +41,11 @@
 
 .navbar-toggle {position: absolute;}
 
-.site-footer {height: 162px; background-color: var(--black);}
+html {height: 100%;}
+body {height: 100%;}
+.site-footer {height: 162px; background-color: var(--black); position : relative; transform : translateY(-100%);}
 .site-footer {display: flex; align-items: center; justify-content: flex-end;}
 .site-footer div {font-weight: bold; font-size: 18px; color: var(--brown); position: relative; right: 162px;}
 .site-footer .qna {    position: relative; right: 8px; top: 24px;}
 .site-footer .qna a {font-size: 16px; font-weight: bold; color: whitesmoke;}
+#wrapper{height: auto; min-height: 100%; padding-bottom: 162px;}

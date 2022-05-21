@@ -1,9 +1,0 @@
-@import "global.css";
-
-main .select option:fist-child:after {content: '책 선택'}
-
-.post .post-box .privite {border: solid 1px var(--error); color: var(--error); padding: 1px 9px; position: relative; top: 7px;}
-
-@media (max-width: 788px) {
-    main .page {position: relative; top: 90px;}
-}

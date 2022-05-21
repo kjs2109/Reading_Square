@@ -45,8 +45,10 @@
             </a>
         </div>
 
-        {% block content %}{% endblock content %}
-
+        <div id='wrapper'>
+            {% block content %}{% endblock content %}
+        </div>
+        
         <footer class="site-footer">
             <div class='qna'><a href={% url 'qnas:qna_list' %}>Q&A</a></div>
             <div>READING SQUARE</div>
