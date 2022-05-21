@@ -1,0 +1,26 @@
+:root {
+    --black: #2f2c28;
+    --placeholder: #A1A0A0;
+    --error: #E6584E;
+    --bage: #FFFAF0;
+    --brown: #B69352;
+    --gray: #E5E4E2;
+    --dark-gray: #686868;
+  }
+
+html {
+    overflow-x: hidden;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+input {
+    text-decoration: none;
+    /* border: none; */
+    /* appearance: none; */
+    outline: none;
+}
+a {
+    color: #2f2c28;
+    text-decoration: none;
+}

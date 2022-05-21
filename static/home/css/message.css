@@ -1,0 +1,20 @@
+@import 'global.css';
+
+/* email_confirmation_required, email_confirmation_done */
+.message {margin-top: 90px; text-align: center;}
+.message p {font-size: 22px; color: var(--dark); line-height: 1.9;}
+.message p strong {font-weight: 600;}
+
+.message .home-btn {display: flex; justify-content: center; margin: 0 auto; align-items: center; width: 150px; height: 40px; margin-top: 45px; border: 1px solid var(--brown);}
+.message .home-btn a {font-size: 22px; font-weight: bold; color: var(--brown)}
+
+/* delete button */
+.message .delete-confirm form {display: inline-block;}
+.message .delete-confirm form button {font-size: 16px; background-color: white;}
+
+/* post_confirm_delete */ 
+.message .delete-confirm {margin-top: 36px;}
+.cp-btn {border: 1px solid var(--brown); margin: 0 7px; padding: 7px 20px; color: var(--brown);}
+.delete-btn {border: 1px solid var(--error); color: var(--error)}
+
+

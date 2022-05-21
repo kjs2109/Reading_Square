@@ -6,10 +6,10 @@ from users.models import User
 class Qna(TimeStampedModel):
 
     TYPE_CHOICES = (
-        ('기타', '기타'),
         ('건의 사항', '건의 사항'),
         ('오류 제보', '오류 제보'),
         ('질문', '질문'),
+        ('기타', '기타'),
     )
 
     title = models.CharField(max_length=50)
