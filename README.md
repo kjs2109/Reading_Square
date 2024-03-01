@@ -1,4 +1,4 @@
-# reading_square
+# Reading Square
 온라인 독서모임을 위한 웹사이트  
 <a>https://reading.pythonanywhere.com/</a>
 
